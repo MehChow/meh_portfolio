@@ -1,13 +1,12 @@
 "use client";
 
-import { allImages } from "@/constant/image-swiper";
+import { galleryImages } from "@/constant/gallery-image";
 import { useTransform, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import useDimension from "@/hooks/use-dimension";
-import "@/styles/lenis.css";
-import "@/styles/gallery.css";
 import Column from "./column";
+import "@/components/main/styles/gallery-parallax.css";
 
 export function GalleryParallax() {
   const container = useRef(null);
@@ -58,16 +57,29 @@ export function GalleryParallax() {
   }, []);
 
   return (
-    <div
-      ref={container}
-      className="h-[175vh] flex rgb(45,45,45) flex-row gap-4 p-4 overflow-hidden relative"
-    >
-      {/* Conditionally render columns based on columnCount */}
-      {columnCount >= 1 && <Column images={[allImages[0], allImages[1], allImages[2]]} y={y1} />}
-      {columnCount >= 2 && <Column images={[allImages[3], allImages[4], allImages[5]]} y={y2} />}
-      {columnCount >= 3 && <Column images={[allImages[6], allImages[7], allImages[8]]} y={y3} />}
-      {columnCount >= 4 && <Column images={[allImages[9], allImages[10], allImages[11]]} y={y4} />}
-      <div className="fade-overlay" />
+    <div className="h-[175vh] relative">
+      <div
+        ref={container}
+        className="h-full flex flex-row gap-4 p-4 overflow-hidden relative opacity-50"
+      >
+        {/* Gallery content */}
+        {columnCount >= 1 && (
+          <Column images={[galleryImages[0], galleryImages[1], galleryImages[2]]} y={y1} />
+        )}
+        {columnCount >= 2 && (
+          <Column images={[galleryImages[3], galleryImages[4], galleryImages[5]]} y={y2} />
+        )}
+        {columnCount >= 3 && (
+          <Column images={[galleryImages[6], galleryImages[7], galleryImages[8]]} y={y3} />
+        )}
+        {columnCount >= 4 && (
+          <Column images={[galleryImages[9], galleryImages[10], galleryImages[11]]} y={y4} />
+        )}
+        <div className="fade-overlay" />
+      </div>
+
+      {/* Description */}
+      <div className="description">SOME TEXT</div>
     </div>
   );
 }

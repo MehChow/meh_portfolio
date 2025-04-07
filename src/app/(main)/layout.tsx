@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import NavBar from "@/components/nav-bar";
 import Logo from "@/components/logo";
-import AuthBlock from "@/components/auth-block";
 import Background from "@/components/main/background";
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default function HomeLayout({
       <header className="flex items-center justify-center top-0 bg-transparent h-24 sticky w-full backdrop-blur-sm z-99">
         <Logo color="text-white" />
         <NavBar />
-        <AuthBlock />
       </header>
 
       <Background />

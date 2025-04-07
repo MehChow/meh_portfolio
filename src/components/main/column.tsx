@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import "@/styles/lenis.css";
+import "@/components/main/styles/column.css";
 
 interface ColumnProps {
   images: string[];

@@ -1,7 +1,7 @@
 import "@/components/main/styles/image-title.css";
 import { MapPin } from "lucide-react";
 
-export function ImageTitle() {
+function ImageTitle() {
   return (
     <div className="flex justify-center items-center h-[calc(100vh-6rem)] w-full select-none">
       <h1 className="title">MEHCHOW</h1>

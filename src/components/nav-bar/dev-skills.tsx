@@ -7,7 +7,7 @@ import {
 import ListItem from "./list-item";
 import Image from "next/image";
 
-export function DevSkillsMenu() {
+function DevSkillsMenu() {
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger className="bg-transparent text-lg text-white">
@@ -17,7 +17,7 @@ export function DevSkillsMenu() {
       <NavigationMenuContent>
         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
           {devSkills.map((skill) => (
-            <div className="justify-between items-center relative">
+            <div className="justify-between items-center relative" key={skill.title}>
               <ListItem key={skill.title} title={skill.title} href={skill.href}>
                 {skill.description}
               </ListItem>

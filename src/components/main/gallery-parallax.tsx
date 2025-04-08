@@ -8,7 +8,7 @@ import useDimension from "@/hooks/use-dimension";
 import Column from "./column";
 import "@/components/main/styles/gallery-parallax.css";
 
-export function GalleryParallax() {
+function GalleryParallax() {
   const container = useRef(null);
   const [columnCount, setColumnCount] = useState(4); // Default to 4 columns
   const { height, width } = useDimension();

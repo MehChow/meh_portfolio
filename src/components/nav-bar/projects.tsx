@@ -7,7 +7,7 @@ import {
 } from "../ui/navigation-menu";
 import ListItem from "./list-item";
 
-export function ProjectsMenu() {
+function ProjectsMenu() {
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger className="bg-transparent text-lg text-white">
@@ -54,9 +54,9 @@ export function ProjectsMenu() {
                     className="rounded-md"
                   />
                 </div>
-                <div className="mb-2 mt-4 text-lg font-medium">🎮Minecraft art</div>
+                <div className="mb-2 mt-4 text-lg font-medium">🎨Minecraft art</div>
                 <p className="text-sm leading-tight text-muted-foreground">
-                  229 consecutive days of insane solo project, built block by block manually
+                  229 consecutive days of insane solo project, built block by block manually!
                 </p>
               </a>
             </NavigationMenuLink>

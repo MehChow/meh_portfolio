@@ -1,7 +1,7 @@
 import Image from "next/image";
 import "@/components/main/styles/background.css";
 
-export function Background() {
+function Background() {
   return (
     <div className="background-wrapper">
       <Image

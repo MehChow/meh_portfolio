@@ -6,7 +6,7 @@ interface LogoProps {
   paddingTop?: string;
 }
 
-export function Logo({ color, paddingTop }: LogoProps) {
+function Logo({ color, paddingTop }: LogoProps) {
   return (
     <Link
       href="/"

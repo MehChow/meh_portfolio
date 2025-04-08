@@ -7,7 +7,7 @@ interface ColumnProps {
   y: any;
 }
 
-export function Column({ images, y = 0 }: ColumnProps) {
+function Column({ images, y = 0 }: ColumnProps) {
   return (
     <motion.div className="column" style={{ y }}>
       {images.map((src, index) => {

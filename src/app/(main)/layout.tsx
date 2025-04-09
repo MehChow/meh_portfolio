@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import NavBar from "@/components/nav-bar";
-import Logo from "@/components/logo";
 import Background from "@/components/main/background";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,11 +14,7 @@ export default function HomeLayout({
 }>) {
   return (
     <div className="min-h-lvh bg-black justify-center items-center flex flex-col">
-      <header className="flex items-center justify-center top-0 bg-transparent h-24 sticky w-full backdrop-blur-sm z-99">
-        <Logo color="text-white" />
-        <NavBar />
-      </header>
-
+      <Header />
       <Background />
       {children}
     </div>

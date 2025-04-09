@@ -15,8 +15,12 @@
     font-size: 10rem;
   }
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1200px) {
     letter-spacing: 12px;
+    font-size: 8rem;
+  }
+
+  @media (max-width: 800px) {
     font-size: 6rem;
   }
 }

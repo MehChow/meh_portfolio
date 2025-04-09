@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={tektur.className}>
+    <html lang="en" className="no-scrollbar">
+      <body className={`${tektur.className}`}>
         {children} <Toaster />
       </body>
     </html>

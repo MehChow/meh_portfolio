@@ -1,18 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface LogoProps {
-  color?: string;
-  paddingTop?: string;
-}
-
-function Logo({ color, paddingTop }: LogoProps) {
+function Logo() {
   return (
     <Link
       href="/"
-      className={`text-4xl font-bold flex items-center gap-4 absolute left-0 pl-6 z-99 ${color} ${paddingTop}`}
+      className={`max-[800px]:text-3xl text-4xl font-bold flex items-center max-[800px]:gap-2 gap-4 absolute left-0 z-99 text-white transition-all pl-4`}
     >
-      <Image src="/logo.png" alt="Logo" width={75} height={75} quality={100} />
+      <div className="max-[800px]:w-16 max-[800px]:h-16 w-20 h-20 transition-all">
+        <Image src="/logo.png" alt="Logo" width={380} height={380} />
+      </div>
       MEHChow
     </Link>
   );

@@ -34,7 +34,7 @@ function LifeMenu() {
                       alt="Apex Legends"
                       width={3840}
                       height={2160}
-                      className="object-cover rounded-t-md"
+                      className="rounded-t-md"
                     />
                   </div>
                   <div className="row-span-1 relative w-full h-[100px]">
@@ -43,7 +43,7 @@ function LifeMenu() {
                       alt="Apex Legends"
                       width={2600}
                       height={1463}
-                      className="object-cover"
+                      className=""
                     />
                   </div>
                   <div className="row-span-1 relative w-full h-[100px]">
@@ -52,7 +52,7 @@ function LifeMenu() {
                       alt="Apex Legends"
                       width={3840}
                       height={2160}
-                      className="object-cover rounded-b-md"
+                      className="rounded-b-md"
                     />
                   </div>
                 </div>
@@ -72,7 +72,7 @@ function LifeMenu() {
                   alt="Lycoris"
                   width={1800}
                   height={1012}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className="absolute inset-0"
                 />
                 <div className="text-lg font-medium text-white z-10">📺Anime</div>
               </a>

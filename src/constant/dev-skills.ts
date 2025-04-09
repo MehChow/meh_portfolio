@@ -31,10 +31,10 @@ export const devSkills: DevSkill[] = [
     icon: "/dev-skills-icon/ai.png",
   },
   {
-    title: "Cloud and BaaS",
+    title: "Cloud & Deploy",
     href: "/docs/primitives/scroll-area",
-    description: "AWS, Firebase",
-    icon: "/dev-skills-icon/aws.png",
+    description: "AWS, Docker, Firebase",
+    icon: "/dev-skills-icon/cloud.png",
   },
   {
     title: "Authentication",

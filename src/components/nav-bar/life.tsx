@@ -27,10 +27,10 @@ function LifeMenu() {
                 <p className="text-sm leading-tight text-muted-foreground">
                   Star rail, ZZZ, NIKKE, Valorant, ToF, Genshin...
                 </p>
-                <div className="w-full h-[300px] grid-rows-3 mt-auto rounded-md">
+                <div className="grid-rows-3 mt-auto">
                   <div className="row-span-1 relative w-full h-[100px]">
                     <Image
-                      src="/life/zzz1.png"
+                      src="/life/game/zzz1.png"
                       alt="Apex Legends"
                       width={3840}
                       height={2160}
@@ -39,16 +39,15 @@ function LifeMenu() {
                   </div>
                   <div className="row-span-1 relative w-full h-[100px]">
                     <Image
-                      src="/life/nikke.png"
+                      src="/life/game/nikke.png"
                       alt="Apex Legends"
                       width={2600}
                       height={1463}
-                      className=""
                     />
                   </div>
                   <div className="row-span-1 relative w-full h-[100px]">
                     <Image
-                      src="/life/tof1.jpg"
+                      src="/life/game/tof1.jpg"
                       alt="Apex Legends"
                       width={3840}
                       height={2160}
@@ -90,6 +89,15 @@ function LifeMenu() {
                 <p className="text-sm leading-tight text-muted-foreground">
                   I got 2 turtles. They are 21 yo already!!
                 </p>
+                <div className="flex-1">
+                  <Image
+                    src="/life/turtle.jpg"
+                    alt="Turtle"
+                    width={2016}
+                    height={954}
+                    className="rounded-md w-full h-full"
+                  />
+                </div>
               </a>
             </NavigationMenuLink>
           </li>
@@ -132,7 +140,7 @@ function LifeMenu() {
                   Mainly desserts, but sometimes drinks and other food as well like lasagna
                 </p>
 
-                <div className="relative w-full h-full rounded-md grid-cols-2 flex gap-2">
+                <div className="grid-cols-2 flex gap-2">
                   <div className="col-span-1 relative w-1/2">
                     <Image
                       src="/life/food/heart-too-soft.jpg"

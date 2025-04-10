@@ -6,6 +6,7 @@ export default function HomePage() {
   return (
     <main className="max-w-[2400px] w-full">
       <ImageTitle />
+      <div className="h-[100vh] bg-transparent"></div>
       <GalleryParallax />
       <div className="h-[100vh] bg-transparent"></div>
       <SocialBox />

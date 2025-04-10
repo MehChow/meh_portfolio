@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Tektur } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import "./layout.css";
+import Header from "@/components/header";
 
 const tektur = Tektur({ subsets: ["latin"] });
 
@@ -18,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="no-scrollbar">
       <body className={`${tektur.className}`}>
-        {children} <Toaster />
+        <div className="hero" />
+        <main className="min-h-lvh bg-black justify-center items-center flex flex-col">
+          <Header />
+          {children}
+        </main>
       </body>
     </html>
   );

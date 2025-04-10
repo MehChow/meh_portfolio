@@ -50,24 +50,39 @@ function Menu() {
           onClick={toggleMenu}
         >
           {/* Menu Items */}
-          <nav className="text-white/80 flex flex-col items-center gap-4 text-3xl font-bold">
+          <nav className="text-white/70 flex flex-col items-center gap-4 text-3xl font-bold">
             <div className="max-[800px]:flex-col flex items-center max-[800px]:gap-4 gap-10">
-              <Link href="/" className="hover:opacity-100 hover:text-white transition-all">
+              <Link
+                href="/"
+                className="hover:opacity-100 hover:text-white transition-all duration-500"
+              >
                 Homepage
               </Link>
-              <Link href="/about" className="hover:opacity-100 hover:text-white transition-all">
+              <Link
+                href="/about-me"
+                className="hover:opacity-100 hover:text-white transition-all duration-500"
+              >
                 About me
               </Link>
-              <Link href="/skills" className="hover:opacity-100 hover:text-white transition-all">
+              <Link
+                href="/skills"
+                className="hover:opacity-100 hover:text-white transition-all duration-500"
+              >
                 Dev skills
               </Link>
             </div>
 
             <div className="max-[800px]:flex-col flex items-center max-[800px]:gap-4 gap-10">
-              <Link href="/projects" className="hover:opacity-100 hover:text-white transition-all">
+              <Link
+                href="/projects"
+                className="hover:opacity-100 hover:text-white transition-all duration-500"
+              >
                 Projects
               </Link>
-              <Link href="/life" className="hover:opacity-100 hover:text-white transition-all">
+              <Link
+                href="/life"
+                className="hover:opacity-100 hover:text-white transition-all duration-500"
+              >
                 Life
               </Link>
             </div>

@@ -6,6 +6,7 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import ListItem from "./list-item";
+import Link from "next/link";
 
 function ProjectsMenu() {
   return (
@@ -19,9 +20,9 @@ function ProjectsMenu() {
           {/* Memeable */}
           <li className="row-span-1 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                href="/"
+                href="/projects"
               >
                 <div className="w-full h-[300px] relative overflow-hidden rounded-md">
                   <Image
@@ -36,14 +37,14 @@ function ProjectsMenu() {
                 <p className="text-sm leading-tight text-muted-foreground">
                   A showcase full-stack mobile app, built with React Native and more
                 </p>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Minecraft pixel art */}
           <li className="row-span-1 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                 href="/"
               >
@@ -60,7 +61,7 @@ function ProjectsMenu() {
                 <p className="text-sm leading-tight text-muted-foreground">
                   229 consecutive days of insane solo project, built block by block manually!
                 </p>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 

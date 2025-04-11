@@ -1,0 +1,26 @@
+.intro {
+  height: 100vh;
+  margin-block: 200px;
+  background-color: transparent;
+}
+
+.top-left-img {
+  transform: translateX(-150%);
+}
+.top-right-img {
+  transform: translateX(150%);
+}
+.bottom-left-img {
+  transform: translateX(-150%);
+}
+.bottom-right-img {
+  transform: translateX(150%);
+}
+
+.intro .top-left-img,
+.intro .top-right-img,
+.intro .bottom-left-img,
+.intro .bottom-right-img {
+  border-radius: 1rem;
+  position: relative;
+}

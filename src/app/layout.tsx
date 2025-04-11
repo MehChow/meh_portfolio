@@ -19,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="no-scrollbar">
       <body className={`${tektur.className}`}>
+        {/* First loaded viewport Background */}
         <div className="hero" />
-        <main className="min-h-lvh bg-black justify-center items-center flex flex-col">
+
+        {/* Main content */}
+        <main className="min-h-lvh bg-black justify-center items-center flex flex-col pt-24">
           <Header />
           {children}
         </main>

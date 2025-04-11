@@ -82,6 +82,6 @@
   }
   100% {
     opacity: 1; /* Remain fully visible */
-    transform: translateY(-16rem); /* Move up slightly (adjust as needed) */
+    transform: translateY(-10rem); /* Move up slightly (adjust as needed) */
   }
 }

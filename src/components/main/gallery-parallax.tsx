@@ -57,7 +57,7 @@ function GalleryParallax() {
   }, []);
 
   return (
-    <div className="h-[175vh] relative">
+    <section className="h-[175vh] relative">
       <div
         ref={container}
         className="h-full flex flex-row gap-4 p-4 overflow-hidden relative opacity-50"
@@ -80,7 +80,7 @@ function GalleryParallax() {
 
       {/* Description */}
       <div className="description">SOME TEXT</div>
-    </div>
+    </section>
   );
 }
 

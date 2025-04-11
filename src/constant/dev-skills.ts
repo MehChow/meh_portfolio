@@ -8,7 +8,7 @@ interface DevSkill {
 export const devSkills: DevSkill[] = [
   {
     title: "Frontend (web)",
-    href: "/docs/primitives/alert-dialog",
+    href: "/dev-skills",
     description: "React (NextJs)",
     icon: "/dev-skills-icon/nextjs.png",
   },

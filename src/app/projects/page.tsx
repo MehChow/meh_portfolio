@@ -7,7 +7,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutMePage() {
+export default function ProjectsPage() {
   useGSAP(() => {}, []);
 
   return (

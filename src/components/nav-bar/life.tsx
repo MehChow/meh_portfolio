@@ -6,6 +6,7 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import ReactPlayer from "react-player/youtube";
+import Link from "next/link";
 
 function LifeMenu() {
   return (
@@ -19,9 +20,9 @@ function LifeMenu() {
           {/* Gaming */}
           <li className="row-span-2 col-span-1 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
-                href="/"
+                href="/life"
               >
                 <div className="text-lg font-medium">🎮Gaming</div>
                 <p className="text-sm leading-tight text-muted-foreground">
@@ -55,14 +56,14 @@ function LifeMenu() {
                     />
                   </div>
                 </div>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Anime */}
           <li className="row-span-1 col-span-2 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start text-right rounded-md no-underline outline-none focus:shadow-md relative overflow-hidden hover:opacity-95 transition-all"
                 href="/"
               >
@@ -74,14 +75,14 @@ function LifeMenu() {
                   className="absolute inset-0"
                 />
                 <div className="text-lg font-medium text-white z-10">📺Anime</div>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Pets */}
           <li className="row-span-1 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-0 no-underline outline-none focus:shadow-md text-center"
                 href="/"
               >
@@ -98,14 +99,14 @@ function LifeMenu() {
                     className="rounded-md w-full h-full"
                   />
                 </div>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Editing */}
           <li className="row-span-2 col-span-1 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col justify-start text-right rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
                 href="/"
               >
@@ -124,14 +125,14 @@ function LifeMenu() {
                     loop
                   />
                 </div>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Cooking */}
           <li className="row-span-1 col-span-2 hover:scale-105 transition-all">
             <NavigationMenuLink asChild>
-              <a
+              <Link
                 className="flex h-full w-full select-none flex-col px-4 justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
                 href="/"
               >
@@ -161,7 +162,7 @@ function LifeMenu() {
                     />
                   </div>
                 </div>
-              </a>
+              </Link>
             </NavigationMenuLink>
           </li>
         </ul>

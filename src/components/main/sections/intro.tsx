@@ -18,7 +18,6 @@ const IntroSection = () => {
         start: "top 90%",
         end: "bottom 70%",
         scrub: 1,
-        markers: true,
       },
     });
 
@@ -31,7 +30,6 @@ const IntroSection = () => {
         start: "top 90%",
         end: "bottom 70%",
         scrub: 1,
-        markers: true,
       },
     });
 
@@ -44,7 +42,6 @@ const IntroSection = () => {
         start: "start 100%",
         end: "bottom 100%",
         scrub: 1,
-        markers: true,
       },
     });
 
@@ -57,7 +54,6 @@ const IntroSection = () => {
         start: "start 100%",
         end: "bottom 100%",
         scrub: 1,
-        markers: true,
       },
     });
   }, []);

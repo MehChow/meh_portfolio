@@ -5,7 +5,7 @@ import { useTransform, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import useDimension from "@/hooks/use-dimension";
-import Column from "./column";
+import Column from "../column";
 import "@/components/main/styles/gallery-parallax.css";
 
 function GalleryParallax() {

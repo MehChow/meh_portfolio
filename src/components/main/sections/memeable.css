@@ -1,0 +1,70 @@
+.pin-container {
+  position: relative;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.images-container {
+  position: relative;
+  width: 50%; /* Adjust as needed */
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden; /* Clip images */
+}
+
+.home-img,
+.user-img {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  border-radius: 0.25rem;
+
+  @media (min-width: 2000px) {
+    width: 400px;
+    height: 800px;
+  }
+}
+
+.home-img {
+  left: 15rem;
+  transform: translateX(-350%) translateY(-15%) rotateZ(45deg);
+}
+
+.user-img {
+  left: 40rem;
+  transform: translateX(-350%) translateY(-10%) rotateZ(30deg);
+
+  @media (min-width: 2000px) {
+    left: 50rem;
+  }
+}
+
+.memeable-description {
+  position: relative;
+  width: 50%; /* Adjust as needed */
+  max-width: 600px;
+  padding: 2rem;
+  z-index: 10;
+  margin-top: 150px;
+  margin-left: 10rem;
+}
+
+.memeable-description h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.memeable-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: white;
+}

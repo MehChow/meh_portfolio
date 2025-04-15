@@ -17,7 +17,7 @@ const anim = {
   }),
 };
 
-const MemeablePreviewSection = () => {
+const PixelEffect = () => {
   const [showPixel, setShowPixel] = useState(false);
   const { width, height } = useDimension();
 
@@ -73,4 +73,4 @@ const MemeablePreviewSection = () => {
   );
 };
 
-export default MemeablePreviewSection;
+export default PixelEffect;

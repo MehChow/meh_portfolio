@@ -6,15 +6,15 @@ import SocialBox from "@/components/main/social-box";
 import "./home.css";
 
 import IntroSection from "@/components/main/sections/intro";
+import Memeable from "@/components/main/sections/memeable";
 
 export default function HomePage() {
   return (
     <main className="max-w-[2400px] w-full">
       <MainTitle />
       <IntroSection />
+      <Memeable />
       <GalleryParallax />
-
-      <div className="h-[100vh] bg-transparent"></div>
       <SocialBox />
     </main>
   );

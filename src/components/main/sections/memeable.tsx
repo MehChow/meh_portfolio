@@ -4,8 +4,38 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
 import "./memeable.css";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
+
+interface Skill {
+  name: string;
+  icon: string;
+  bgWhite: boolean;
+}
+
+const SKILLS: Skill[] = [
+  { name: "React Native", icon: "/dev-skills-icon/react-native.png", bgWhite: false },
+  { name: "Firebase", icon: "/dev-skills-icon/firebase.png", bgWhite: false },
+  { name: "MongoDB", icon: "/dev-skills-icon/mongo-db.png", bgWhite: true },
+  { name: "Node.js", icon: "/dev-skills-icon/nodejs.png", bgWhite: true },
+  { name: "AWS Cloud", icon: "/dev-skills-icon/aws.png", bgWhite: true },
+  { name: "Expo", icon: "/dev-skills-icon/expo.png", bgWhite: true },
+];
+
+const SkillItem = ({ name, icon, bgWhite }: Skill) => (
+  <div className="flex gap-2">
+    <div className="w-8 h-8 flex justify-center items-center relative rounded-full">
+      <Image
+        src={icon}
+        alt={name}
+        fill
+        className={bgWhite ? "bg-white rounded-full p-1 object-contain" : undefined}
+      />
+    </div>
+    <p>{name}</p>
+  </div>
+);
 
 function Memeable() {
   useGSAP(() => {
@@ -48,7 +78,13 @@ function Memeable() {
       end: () => {
         const description = document.querySelector(".memeable-description");
         if (description instanceof HTMLElement) {
-          return `+=${description.scrollHeight - 600}`;
+          const imagesContainer = document.querySelector(".images-container");
+          // Use window.innerHeight as fallback if not HTMLElement
+          const pinnedHeight =
+            imagesContainer instanceof HTMLElement
+              ? imagesContainer.offsetHeight
+              : window.innerHeight;
+          return `+=${Math.max(description.scrollHeight - pinnedHeight * 0.8, 0)}`;
         }
         return "+=0";
       },
@@ -95,7 +131,13 @@ function Memeable() {
       end: () => {
         const secondDescription = document.querySelector(".second-description");
         if (secondDescription instanceof HTMLElement) {
-          return `+=${secondDescription.scrollHeight - 600}`;
+          const secondImagesContainer = document.querySelector(".second-images-container");
+          // Use window.innerHeight as fallback if not HTMLElement
+          const pinnedHeight =
+            secondImagesContainer instanceof HTMLElement
+              ? secondImagesContainer.offsetHeight
+              : window.innerHeight;
+          return `+=${Math.max(secondDescription.scrollHeight - pinnedHeight * 0.8, 0)}`;
         }
         return "+=0";
       },
@@ -117,29 +159,35 @@ function Memeable() {
             </div>
           </div>
           <div className="memeable-description text-justify">
-            <h1>Memeable</h1>
-            <h2>Full-stack side project📱</h2>
+            <h1 className="description-title">Memeable</h1>
+            <h2 className="description-subtitle">Full-stack side project📱</h2>
             <p>
-              A social media platform where users can share images, interact with others through
-              comments, follows, and likes.
+              A social media platform where users can share images and interacts with other users.
             </p>
             <p>
-              More content to ensure scrolling. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
+              Common features like posting, likes, comments, follows, edit profiles, and like
+              comments are supported.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
+              Mostly importantly, there is a unique music sharing feature where users can set a
+              background music in their profile✨
             </p>
+
+            <h3 className="description-section-title">Tech Stack</h3>
+            <div className="grid grid-cols-2 grid-rows-3">
+              {SKILLS.map((skill, index) => (
+                <SkillItem key={index} {...skill} />
+              ))}
+            </div>
+
+            <h3 className="description-section-title">Download</h3>
             <p>
-              Additional content to extend the description. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              You can't! This is just a side project that I used for job hunting for my first job🤣.
+              But if you are interested and looking for a full demo, you can check it out in my{" "}
+              <Link href="/projects" className="underline text-blue-300">
+                Projects
+              </Link>
+              .
             </p>
           </div>
         </div>

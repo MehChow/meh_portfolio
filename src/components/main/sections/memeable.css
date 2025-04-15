@@ -79,27 +79,32 @@
   z-index: 10;
   margin: 100px auto auto auto;
   box-sizing: border-box; /* Ensure padding doesn’t affect width */
-}
 
-.memeable-description h1,
-.second-description h1 {
-  font-size: 3rem;
-  color: aqua;
-  font-weight: 600;
-}
+  .description-title {
+    font-size: 4rem;
+    color: aqua;
+    font-weight: 600;
+  }
 
-.memeable-description h2,
-.second-description h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: aquamarine;
-  font-style: italic;
+  .description-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: aquamarine;
+    font-style: italic;
+  }
+
+  .description-section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: burlywood;
+    padding-top: 100px;
+  }
 }
 
 .memeable-description p,
 .second-description p {
   font-size: 1.5rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: white;
 }

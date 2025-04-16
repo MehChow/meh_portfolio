@@ -1,0 +1,126 @@
+.pin-container {
+  position: relative;
+  width: 100%;
+}
+
+.content-wrapper,
+.second-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.images-container,
+.second-images-container {
+  position: relative;
+  width: 50%; /* Adjust as needed */
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden; /* Clip images */
+}
+
+.left-description-container {
+  position: relative;
+  width: 50%; /* Matches images-container */
+  /* Removed min-height to avoid constraining content */
+}
+
+.home-img,
+.user-img {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  border-radius: 0.25rem;
+
+  @media (min-width: 2000px) {
+    width: 400px;
+    height: 800px;
+  }
+}
+
+.home-img {
+  left: 15rem;
+  transform: translateX(-350%) translateY(-15%) rotateZ(45deg);
+}
+
+.user-img {
+  left: 40rem;
+  transform: translateX(-350%) translateY(-10%) rotateZ(30deg);
+
+  @media (min-width: 2000px) {
+    left: 50rem;
+  }
+}
+
+.second-home-img,
+.second-user-img {
+  width: 600px;
+  height: auto;
+  aspect-ratio: 16/9;
+  position: absolute;
+  top: 0;
+  border-radius: 0.25rem;
+
+  @media (min-width: 2000px) {
+    width: 800px;
+    height: 400px;
+  }
+}
+
+.second-home-img {
+  right: 15rem;
+  transform: translateX(350%) translateY(15%) rotateZ(45deg);
+}
+
+.second-user-img {
+  right: 15rem;
+  transform: translateX(350%) translateY(10%) rotateZ(45deg);
+}
+
+.second-home-img,
+.second-user-img {
+  @media (min-width: 2000px) {
+    right: 20rem;
+  }
+}
+
+.memeable-description,
+.second-description {
+  position: relative;
+  max-width: 600px; /* Consistent max-width */
+  width: 100%; /* Ensure full width within parent */
+  padding: 2rem;
+  z-index: 10;
+  margin: 100px auto auto auto;
+  box-sizing: border-box; /* Ensure padding doesn’t affect width */
+
+  .description-title {
+    font-size: 4rem;
+    color: aqua;
+    font-weight: 600;
+  }
+
+  .description-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: aquamarine;
+    font-style: italic;
+  }
+
+  .description-section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: burlywood;
+    padding-top: 100px;
+  }
+}
+
+.memeable-description p,
+.second-description p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: white;
+}

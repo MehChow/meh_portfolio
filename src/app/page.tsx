@@ -6,6 +6,7 @@ import "./home.css";
 import IntroSection from "@/components/main/sections/intro";
 import ProjectsPreview from "@/components/main/sections/projects-preview";
 import LifePreview from "@/components/main/sections/life-preview";
+import OutroSection from "@/components/main/sections/outro";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <IntroSection />
       <ProjectsPreview />
       <LifePreview />
+      <OutroSection />
     </main>
   );
 }

@@ -44,7 +44,7 @@ const IntroSection = () => {
   }, []);
 
   return (
-    <section className="intro grid grid-cols-2 grid-rows-2 px-60 py-20 gap-y-20 gap-x-10 relative">
+    <section className="intro grid grid-cols-2 grid-rows-2 px-60 pb-20 gap-y-20 gap-x-10 relative">
       {imageConfigs.map(({ className, src }, index) => (
         <ImageItem key={index} className={className} src={src} />
       ))}

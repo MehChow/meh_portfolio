@@ -9,7 +9,7 @@ function SocialBox() {
         target="_blank"
         className="hover:opacity-50 transition-opacity"
       >
-        <Image src="/social/github-mark-white.png" width={28} height={28} alt="GitHub" />
+        <Image src="/social/github-mark-white.png" width={20} height={20} alt="GitHub" />
       </Link>
 
       <Link
@@ -17,7 +17,7 @@ function SocialBox() {
         target="_blank"
         className="hover:opacity-50 transition-opacity"
       >
-        <Image src="/social/youtube.png" width={28} height={28} alt="Youtube" />
+        <Image src="/social/youtube.png" width={20} height={20} alt="Youtube" />
       </Link>
     </div>
   );

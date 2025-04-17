@@ -1,7 +1,27 @@
-.outro {
+.outro-doro {
   opacity: 0;
   transform: scale(0); /* Use transform instead of scale property for GSAP compatibility */
-  position: absolute;
+  position: relative;
   z-index: 10;
   will-change: transform, opacity; /* Optimize for animation performance */
+}
+
+.congrats-container {
+  overflow: hidden;
+}
+
+.congrats-text-wrapper {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transform: translateY(150px);
+}
+
+.explore-more-container {
+  opacity: 0;
+  font-size: 2.25rem;
+  color: white;
+  transform: translateY(150px);
 }

@@ -15,7 +15,7 @@ function OutroSection() {
     // First animation: Rotate, scale, and fade in when the outro section enters the viewport
     gsap.to(".outro-doro", {
       opacity: 1,
-      scale: 10,
+      scale: 1,
       rotate: 3600,
       scrollTrigger: {
         trigger: ".outro-doro",
@@ -64,6 +64,17 @@ function OutroSection() {
           toggleActions: "restart none reverse none",
         },
       });
+
+      gsap.to(".outro-doro-text", {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top top",
+          end: "top top",
+          toggleActions: "restart none none none",
+          scrub: 1,
+        },
+      });
     }
   }, [pathname]);
 
@@ -76,7 +87,13 @@ function OutroSection() {
         </div>
       </div>
 
-      <div className="w-10 h-10 relative my-40 outro-doro">
+      <div className="w-92 h-92 relative outro-doro">
+        <Link
+          href="/dev-skills"
+          className="outro-doro-text hover:scale-105 transition-all duration-300"
+        >
+          GO!!!!!
+        </Link>
         <Image src="/life/game/doro1.png" alt="" fill className="object-contain" />
       </div>
 

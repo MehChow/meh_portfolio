@@ -17,7 +17,7 @@ function Card({ src, alt, label, objectPosition }: CardProps) {
         fill
         className={`rounded-4xl object-cover hover:opacity-50 transition-all duration-300 ${objectPosition}`}
       />
-      <p className="absolute opacity-0 text-4xl font-bold text-white tracking-widest group-hover:opacity-100 transition-all duration-300">
+      <p className="absolute opacity-0 text-4xl font-bold text-white tracking-widest group-hover:opacity-100 transition-all duration-300 pointer-events-none">
         {label}
       </p>
     </div>

@@ -1,8 +1,8 @@
-import "./styles/main-title.css";
+import "./hero.css";
 import CubeTextAnimation from "./cube-text";
-import MainFooter from "./main-footer";
+import HeroFooter from "./hero-footer";
 
-function MainTitle() {
+function Hero() {
   return (
     <div className="flex justify-center items-center h-[calc(100vh-6rem)] w-full select-none flex-col">
       <h1 className="title">MEHCHOW</h1>
@@ -12,9 +12,9 @@ function MainTitle() {
         <CubeTextAnimation />
       </div>
 
-      <MainFooter />
+      <HeroFooter />
     </div>
   );
 }
 
-export default MainTitle;
+export default Hero;

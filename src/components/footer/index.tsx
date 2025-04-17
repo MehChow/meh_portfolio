@@ -20,7 +20,7 @@ function Footer() {
       scrollTrigger: {
         trigger: ".footer-content-wrapper",
         start: "top 80%",
-        end: "top 20%",
+        end: "top 50%",
         scrub: 1,
       },
     });

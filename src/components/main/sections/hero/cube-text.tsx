@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const texts = ["Gamer", "Video Editor", "Developer"];
+const texts = ["Developer", "Video Editor", "Gamer"];
 
 export default function CubeTextAnimation() {
   const textRefs = useRef<(HTMLDivElement | null)[]>([]);

@@ -1,6 +1,6 @@
 "use client";
 
-import MainTitle from "@/components/main/main-title";
+import Hero from "@/components/main/sections/hero";
 import "./home.css";
 
 import IntroSection from "@/components/main/sections/intro";
@@ -11,7 +11,7 @@ import OutroSection from "@/components/main/sections/outro";
 export default function HomePage() {
   return (
     <main className="max-w-[2400px] w-full">
-      <MainTitle />
+      <Hero />
       <IntroSection />
       <ProjectsPreview />
       <LifePreview />

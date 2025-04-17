@@ -1,7 +1,7 @@
 import { MapPin } from "lucide-react";
-import "./styles/main-footer.css";
+import "./hero-footer.css";
 
-const MainFooter = () => {
+const HeroFooter = () => {
   return (
     <div className="footer">
       <div className="flex gap-1 items-center">
@@ -14,4 +14,4 @@ const MainFooter = () => {
   );
 };
 
-export default MainFooter;
+export default HeroFooter;

@@ -9,7 +9,6 @@
   background-repeat: no-repeat;
   background-position: top left;
 
-  /* Mask applied only to the background div */
   -webkit-mask-image: 
     /* Top fade */ linear-gradient(
       to top,
@@ -27,18 +26,21 @@
     ),
     /* Right fade */ linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 70%);
   mask-composite: intersect;
-
-  z-index: 0; /* Ensure background stays behind */
+  z-index: 0;
 }
 
-.footer-wrapper {
+.footer-content-wrapper {
   position: absolute;
   right: 10rem;
   top: 10rem;
-  height: 80vh;
-  width: 30vw;
+  height: 100vh;
+  width: 40vw;
   opacity: 0;
   transform: translateY(20%);
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  gap: 60px;
 }
 
 .footer-icon-container {
@@ -55,5 +57,23 @@
   font-size: 1.125rem;
   font-weight: 600;
   fill: rgba(255, 255, 255, 0.9);
-  letter-spacing: 5px;
+  letter-spacing: 1px;
+}
+
+.react-dev-text {
+  font-size: 1.25rem;
+  font-style: italic;
+  background: linear-gradient(to right, #c7d5d6 0%, #6e98b1 50%, #105bb1 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.video-editor-text {
+  font-size: 1.25rem;
+  font-style: italic;
+  background: linear-gradient(to right, #e7c9c5 0%, #e78355 50%, #ff0000 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }

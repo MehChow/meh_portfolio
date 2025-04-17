@@ -52,8 +52,8 @@ function OutroSection() {
 
     if (pathname === "/") {
       gsap.to(".outro-doro", {
-        y: window.innerHeight * 0.9,
-        x: window.innerWidth * 0.1,
+        y: window.innerHeight * 1.1,
+        x: window.innerWidth * 0.12,
         ease: "power4.out",
         duration: 1,
         delay: 1,
@@ -61,7 +61,7 @@ function OutroSection() {
           trigger: "footer",
           start: "top top",
           end: "top top",
-          toggleActions: "restart none none reverse",
+          toggleActions: "restart none reverse none",
         },
       });
     }
@@ -76,7 +76,7 @@ function OutroSection() {
         </div>
       </div>
 
-      <div className="w-10 h-10 relative outro-doro my-40">
+      <div className="w-10 h-10 relative my-40 outro-doro">
         <Image src="/life/game/doro1.png" alt="" fill className="object-contain" />
       </div>
 

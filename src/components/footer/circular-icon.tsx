@@ -15,7 +15,7 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
   useGSAP(() => {
     // Animation for circular text movement along the path
     gsap.to(".footer-icon-circular-text", {
-      attr: { startOffset: "30%" }, // Adjust this value to control the "rotation" distance
+      attr: { startOffset: "25%" }, // Adjust this value to control the "rotation" distance
       ease: "power1.out",
       scrollTrigger: {
         trigger: ".footer-icon-container",
@@ -34,8 +34,9 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
           src={imageSrc}
           alt="Circular icon"
           fill
-          className="object-cover object-[5%]"
+          className="object-cover object-[5%] select-none"
           quality={100}
+          sizes="800px"
         />
       </div>
 
@@ -52,7 +53,7 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
         />
         <text>
           <textPath
-            className="footer-icon-circular-text"
+            className="footer-icon-circular-text cursor-default select-none"
             href="#circlePath"
             startOffset="-180%"
             textAnchor="start"

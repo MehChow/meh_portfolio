@@ -4,7 +4,6 @@ import "./globals.css";
 import "./layout.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import SocialBox from "@/components/main/social-box";
 
 const tektur = Tektur({ subsets: ["latin"] });
 
@@ -28,7 +27,6 @@ export default function RootLayout({
         <main className="min-h-lvh bg-black justify-center items-center flex flex-col pt-24">
           <Header />
           {children}
-          <SocialBox />
           <Footer />
         </main>
       </body>

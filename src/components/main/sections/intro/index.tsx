@@ -52,7 +52,7 @@ const IntroSection = () => {
       {imageConfigs.map(({ className, src }, index) => (
         <ImageItem key={index} className={className} src={src} />
       ))}
-      <div className="stagger-text-container h-60 w-[30vw] -translate-x-1/2 -translate-y-1/2 gap-1 transition-all max-[1200px]:w-[40vw] max-[800px]:h-40 max-[640px]:h-30 max-[640px]:w-[30vw]">
+      <div className="stagger-text-container medium:h-60 small:h-50 mobile:h-40 medium:w-[30vw] mobile:w-[40vw] h-30 w-[30vw] -translate-x-1/2 -translate-y-1/2 gap-1 transition-all">
         <StaggerText>Work hard</StaggerText>
         <StaggerText>Play hard</StaggerText>
       </div>

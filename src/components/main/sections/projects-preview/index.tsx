@@ -71,7 +71,6 @@ const setupPinning = (
 
 function ProjectsPreview() {
   useGSAP(() => {
-    // Animate first section images
     animateImage("home-img", 350, 45, "top 90%", "bottom 70%");
     animateImage("user-img", 350, 40, "top 90%", "bottom 70%");
 

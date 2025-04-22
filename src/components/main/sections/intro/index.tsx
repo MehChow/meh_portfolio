@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./intro.css";
 
 import StaggerText from "./stagger-text";
 import { imageConfigs } from "./image-config";
@@ -18,7 +19,9 @@ interface ImageConfig {
 
 // Reusable component for each grid image
 const ImageItem = ({ className, src }: { className: string; src: string }) => (
-  <div className={`grid-cols-1 grid-rows-1 ${className}`}>
+  <div
+    className={`grid-cols-1 grid-rows-1 ${className} max-[1200px]:aspect-square`}
+  >
     <Image src={src} fill alt="" className="rounded-2xl object-cover" />
   </div>
 );
@@ -34,6 +37,7 @@ const animateImage = ({ className, xPercent, start, end }: ImageConfig) => {
       start,
       end,
       scrub: 1,
+      invalidateOnRefresh: true,
     },
   });
 };
@@ -44,11 +48,11 @@ const IntroSection = () => {
   }, []);
 
   return (
-    <section className="intro grid grid-cols-2 grid-rows-2 px-60 pb-20 gap-y-20 gap-x-10 relative">
+    <section className="intro large:px-60 medium:h-[100vh] small:px-20 small:mt-50 mobile:mt-20 mt-10 h-auto gap-10 px-10">
       {imageConfigs.map(({ className, src }, index) => (
         <ImageItem key={index} className={className} src={src} />
       ))}
-      <div className="absolute bg-black w-[30vw] h-60 rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center flex-col gap-1 overflow-hidden">
+      <div className="stagger-text-container h-60 w-[30vw] -translate-x-1/2 -translate-y-1/2 gap-1 transition-all max-[1200px]:w-[40vw] max-[800px]:h-40 max-[640px]:h-30 max-[640px]:w-[30vw]">
         <StaggerText>Work hard</StaggerText>
         <StaggerText>Play hard</StaggerText>
       </div>

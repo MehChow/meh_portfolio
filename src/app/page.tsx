@@ -1,7 +1,6 @@
 "use client";
 
 import Hero from "@/components/main/sections/hero";
-import "./home.css";
 
 import IntroSection from "@/components/main/sections/intro";
 import ProjectsPreview from "@/components/main/sections/projects-preview";

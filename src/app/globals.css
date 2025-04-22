@@ -122,7 +122,10 @@
 }
 
 @theme {
-  --breakpoint-3xl: 112rem;
+  --breakpoint-large: 112rem;
+  --breakpoint-medium: 75rem;
+  --breakpoint-small: 50rem;
+  --breakpoint-mobile: 40rem;
 }
 
 @layer utilities {

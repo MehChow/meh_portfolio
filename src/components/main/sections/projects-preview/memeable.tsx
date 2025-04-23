@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SkillItem, SKILLS } from "./skills";
+import { RefObject } from "react";
 
 interface ImageConfig {
   className: string;
@@ -16,6 +17,9 @@ interface MemeableSectionProps {
   descriptionClass: string;
   imagesContainerClass: string;
   wrapperClass: string;
+  imagesContainerRef: RefObject<HTMLDivElement | null>;
+  homeImgRef: RefObject<HTMLDivElement | null>;
+  userImgRef: RefObject<HTMLDivElement | null>;
 }
 
 export const MemeableSection = ({
@@ -23,11 +27,18 @@ export const MemeableSection = ({
   descriptionClass,
   imagesContainerClass,
   wrapperClass,
+  imagesContainerRef,
+  homeImgRef,
+  userImgRef,
 }: MemeableSectionProps) => (
   <div className={wrapperClass}>
-    <div className={imagesContainerClass}>
+    <div className={imagesContainerClass} ref={imagesContainerRef}>
       {images.map(({ className, src }, index) => (
-        <div key={index} className={className}>
+        <div
+          key={index}
+          className={className}
+          ref={className === "home-img" ? homeImgRef : userImgRef}
+        >
           <Image src={src} alt="" fill className="rounded-md" />
         </div>
       ))}

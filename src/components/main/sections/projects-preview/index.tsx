@@ -6,132 +6,125 @@ import "./projects-preview.css";
 import { MemeableSection } from "./memeable";
 import { PixelArtSection } from "./pixel-art";
 import { memeableImages, minecraftImages } from "./image-config";
+import { RefObject, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const animateImage = (
-  className: string,
+  imgRef: RefObject<HTMLDivElement | null>,
   targetXFunc: () => number,
   targetYFunc: () => number,
   start: string,
   end: string,
 ) => {
-  gsap.to(`.${className}`, {
-    x: targetXFunc, // Horizontal slide
-    y: targetYFunc, // Downward motion for wave effect
-    rotateZ: 0, // Rotate back to 0
-    duration: 2.5,
-    ease: "power1.out",
-    scrollTrigger: {
-      trigger: `.${className}`,
-      toggleActions: "restart none none none",
-      start,
-      end,
-      scrub: 1,
-      invalidateOnRefresh: true,
-    },
-  });
+  if (imgRef.current) {
+    gsap.to(imgRef.current, {
+      x: targetXFunc,
+      y: targetYFunc,
+      rotateZ: 0,
+      duration: 2.5,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: imgRef.current,
+        toggleActions: "restart none none none",
+        start,
+        end,
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
 };
 
-// Reusable function to setup pinning
 const setupPinning = (
-  triggerClass: string,
-  pinClass: string,
+  pinRef: RefObject<HTMLDivElement | null>,
   descriptionClass: string,
   multiplier: number,
 ) => {
-  ScrollTrigger.create({
-    trigger: `.${triggerClass}`,
-    start: "top top",
-    end: () => {
-      const description = document.querySelector(`.${descriptionClass}`);
-      if (description instanceof HTMLElement) {
-        const imagesContainer = document.querySelector(`.${pinClass}`);
-        const pinnedHeight =
-          imagesContainer instanceof HTMLElement
-            ? imagesContainer.offsetHeight
-            : window.innerHeight;
-        return `+=${Math.max(description.scrollHeight - pinnedHeight * multiplier, 0)}`;
-      }
-      return "+=0";
-    },
-    pin: `.${pinClass}`,
-    pinSpacing: true,
-  });
+  if (pinRef.current) {
+    const description = document.querySelector(`.${descriptionClass}`);
+    ScrollTrigger.create({
+      trigger: pinRef.current,
+      start: "top top",
+      end: () => {
+        if (description instanceof HTMLElement && pinRef.current) {
+          const pinnedHeight = pinRef.current.offsetHeight;
+          return `+=${Math.max(description.scrollHeight - pinnedHeight * multiplier, 0)}`;
+        }
+        return "+=0";
+      },
+      pin: pinRef.current,
+      pinSpacing: true,
+    });
+  }
 };
 
 function ProjectsPreview() {
+  // Refs for first section
+  const imagesContainerRef = useRef<HTMLDivElement>(null);
+  const homeImgRef = useRef<HTMLDivElement>(null);
+  const userImgRef = useRef<HTMLDivElement>(null);
+
+  // Refs for second section
+  const secondImagesContainerRef = useRef<HTMLDivElement>(null);
+  const secondHomeImgRef = useRef<HTMLDivElement>(null);
+  const secondUserImgRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
+    // First Section Animations
     animateImage(
-      "user-img",
+      userImgRef,
       () => {
-        const container = document.querySelector(
-          ".images-container",
-        ) as HTMLElement;
-        const img1 = document.querySelector(".user-img") as HTMLElement;
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
         return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
       },
-      () => 200, // Move downward for wave effect
+      () => 200,
       "top 90%",
       "bottom 70%",
     );
 
-    // img2 (home-img) to the left of img1 with a gap
     animateImage(
-      "home-img",
+      homeImgRef,
       () => {
-        const container = document.querySelector(
-          ".images-container",
-        ) as HTMLElement;
-        const img1 = document.querySelector(".user-img") as HTMLElement;
-        const img2 = document.querySelector(".home-img") as HTMLElement;
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
+        const img2 = homeImgRef.current;
         const gap = 80;
         return container && img1 && img2
           ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
           : 0;
       },
-      () => 200, // Same downward motion
+      () => 200,
       "top 90%",
       "bottom 70%",
     );
 
-    // Setup pinning for first section
-    setupPinning(
-      "pin-container",
-      "images-container",
-      "memeable-description",
-      0.8,
-    );
+    setupPinning(imagesContainerRef, "memeable-description", 0.8);
 
-    // img1 (second-user-img) sticks to the left border
+    // Second Section Animations
     animateImage(
-      "second-user-img",
-      () => 0, // Stick to left border
-      () => 100, // Move downward for wave effect
+      secondUserImgRef,
+      () => 0,
+      () => 100,
       "top 90%",
       "bottom 70%",
     );
 
-    // img2 (second-home-img) below img1 with a gap
     animateImage(
-      "second-home-img",
-      () => 0, // Stick to left border
+      secondHomeImgRef,
+      () => 0,
       () => {
-        const img1 = document.querySelector(".second-user-img") as HTMLElement;
-        const img2 = document.querySelector(".second-home-img") as HTMLElement;
+        const img1 = secondUserImgRef.current;
+        const img2 = secondHomeImgRef.current;
         const gap = 40;
-        return img1 && img2 ? img1.offsetHeight + gap + 100 : 100; // Vertical stacking + downward motion
+        return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
       },
       "top 90%",
       "bottom 70%",
     );
 
-    setupPinning(
-      "second-content-wrapper",
-      "second-images-container",
-      "second-description",
-      0.9,
-    );
+    setupPinning(secondImagesContainerRef, "second-description", 0.9);
   }, []);
 
   return (
@@ -141,12 +134,18 @@ function ProjectsPreview() {
         descriptionClass="memeable-description text-justify"
         imagesContainerClass="images-container"
         wrapperClass="content-wrapper"
+        imagesContainerRef={imagesContainerRef}
+        homeImgRef={homeImgRef}
+        userImgRef={userImgRef}
       />
       <PixelArtSection
         images={minecraftImages}
         descriptionClass="second-description text-justify"
         imagesContainerClass="second-images-container"
         wrapperClass="second-content-wrapper"
+        secondImagesContainerRef={secondImagesContainerRef}
+        secondHomeImgRef={secondHomeImgRef}
+        secondUserImgRef={secondUserImgRef}
       />
     </section>
   );

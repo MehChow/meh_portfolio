@@ -2,49 +2,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { SkillItem, SKILLS } from "./skills";
 import { RefObject } from "react";
-
-interface ImageConfig {
-  className: string;
-  src: string;
-  xPercent: number;
-  yPercent: number;
-  start: string;
-  end: string;
-}
+import { ImageConfig } from "./image-config";
 
 interface MemeableSectionProps {
   images: ImageConfig[];
-  descriptionClass: string;
-  imagesContainerClass: string;
-  wrapperClass: string;
   imagesContainerRef: RefObject<HTMLDivElement | null>;
   homeImgRef: RefObject<HTMLDivElement | null>;
   userImgRef: RefObject<HTMLDivElement | null>;
+  descriptionRef: RefObject<HTMLDivElement | null>;
 }
 
 export const MemeableSection = ({
   images,
-  descriptionClass,
-  imagesContainerClass,
-  wrapperClass,
   imagesContainerRef,
   homeImgRef,
   userImgRef,
+  descriptionRef,
 }: MemeableSectionProps) => (
-  <div className={wrapperClass}>
-    <div className={imagesContainerClass} ref={imagesContainerRef}>
+  <div className="content-wrapper">
+    <div className="images-container" ref={imagesContainerRef}>
       {images.map(({ className, src }, index) => (
         <div
           key={index}
           className={className}
-          ref={className === "home-img" ? homeImgRef : userImgRef}
+          ref={className === "memeable-home-img" ? homeImgRef : userImgRef}
         >
           <Image src={src} alt="" fill className="rounded-md" />
         </div>
       ))}
     </div>
-    <div className="right-description-container">
-      <div className={descriptionClass}>
+    <div className="description-container pr-16">
+      <div className="memeable-description text-justify" ref={descriptionRef}>
         <h1 className="description-title">Memeable</h1>
         <h2 className="description-subtitle">Full-stack side project📱</h2>
         <p>

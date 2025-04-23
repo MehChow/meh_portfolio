@@ -1,0 +1,104 @@
+$title-color: aqua;
+$subtitle-color: burlywood;
+$description-color: aquamarine;
+
+// Container / Wrapper
+.pin-container {
+  position: relative;
+  width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.images-container {
+  position: relative;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 50%;
+}
+
+.description-container {
+  position: relative;
+  width: 50%;
+}
+
+// Images
+.memeable-home-img,
+.memeable-user-img {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  border-radius: 0.25rem;
+
+  &.memeable-home-img {
+    transform: translateX(-250%) translateY(-15%) rotateZ(45deg);
+  }
+
+  &.memeable-user-img {
+    transform: translateX(-250%) translateY(-10%) rotateZ(30deg);
+  }
+}
+
+.pixelart-kronii-img,
+.pixelart-suisei-img {
+  width: 650px;
+  height: auto;
+  aspect-ratio: 16/9;
+  position: absolute;
+  top: 0;
+  border-radius: 0.25rem;
+
+  &.pixelart-kronii-img {
+    transform: translateX(250%) translateY(15%) rotateZ(45deg);
+  }
+
+  &.pixelart-suisei-img {
+    transform: translateX(250%) translateY(10%) rotateZ(45deg);
+  }
+}
+
+// Description
+.memeable-description,
+.second-description {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  z-index: 10;
+  margin: 100px auto auto auto;
+  box-sizing: border-box;
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .description-title {
+    font-size: 4rem;
+    color: $title-color;
+    font-weight: 600;
+  }
+
+  .description-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: $description-color;
+    font-style: italic;
+  }
+
+  .description-section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $subtitle-color;
+    padding-top: 100px;
+  }
+}

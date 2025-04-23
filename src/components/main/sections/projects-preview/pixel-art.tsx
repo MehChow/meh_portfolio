@@ -1,38 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RefObject } from "react";
-
-interface ImageConfig {
-  className: string;
-  src: string;
-  xPercent: number;
-  yPercent: number;
-  start: string;
-  end: string;
-}
+import { ImageConfig } from "./image-config";
 
 interface MinecraftSectionProps {
   images: ImageConfig[];
-  descriptionClass: string;
-  imagesContainerClass: string;
-  wrapperClass: string;
   secondImagesContainerRef: RefObject<HTMLDivElement | null>;
   secondHomeImgRef: RefObject<HTMLDivElement | null>;
   secondUserImgRef: RefObject<HTMLDivElement | null>;
+  descriptionRef: RefObject<HTMLDivElement | null>;
 }
 
 export const PixelArtSection = ({
   images,
-  descriptionClass,
-  imagesContainerClass,
-  wrapperClass,
   secondImagesContainerRef,
   secondHomeImgRef,
   secondUserImgRef,
+  descriptionRef,
 }: MinecraftSectionProps) => (
-  <div className={wrapperClass}>
-    <div className="left-description-container">
-      <div className={descriptionClass}>
+  <div className="content-wrapper">
+    <div className="description-container pl-16">
+      <div className="second-description text-justify" ref={descriptionRef}>
         <h1 className="description-title text-left text-nowrap">
           Minecraft Pixel Art
         </h1>
@@ -84,13 +72,13 @@ export const PixelArtSection = ({
         </p>
       </div>
     </div>
-    <div className={imagesContainerClass} ref={secondImagesContainerRef}>
+    <div className="images-container" ref={secondImagesContainerRef}>
       {images.map(({ className, src }, index) => (
         <div
           key={index}
           className={className}
           ref={
-            className === "second-home-img"
+            className === "pixelart-suisei-img"
               ? secondHomeImgRef
               : secondUserImgRef
           }

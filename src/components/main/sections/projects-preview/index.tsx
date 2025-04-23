@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import "./projects-preview.css";
+import "./projects-preview.scss";
 import { MemeableSection } from "./memeable";
 import { PixelArtSection } from "./pixel-art";
 import { memeableImages, minecraftImages } from "./image-config";
@@ -14,8 +14,6 @@ const animateImage = (
   imgRef: RefObject<HTMLDivElement | null>,
   targetXFunc: () => number,
   targetYFunc: () => number,
-  start: string,
-  end: string,
 ) => {
   if (imgRef.current) {
     gsap.to(imgRef.current, {
@@ -27,8 +25,8 @@ const animateImage = (
       scrollTrigger: {
         trigger: imgRef.current,
         toggleActions: "restart none none none",
-        start,
-        end,
+        start: "top 90%",
+        end: "bottom 70%",
         scrub: 1,
         invalidateOnRefresh: true,
       },
@@ -38,17 +36,18 @@ const animateImage = (
 
 const setupPinning = (
   pinRef: RefObject<HTMLDivElement | null>,
-  descriptionClass: string,
+  descriptionRef: RefObject<HTMLDivElement | null>,
   multiplier: number,
 ) => {
-  if (pinRef.current) {
-    const description = document.querySelector(`.${descriptionClass}`);
+  if (pinRef.current && descriptionRef.current) {
     ScrollTrigger.create({
       trigger: pinRef.current,
       start: "top top",
       end: () => {
-        if (description instanceof HTMLElement && pinRef.current) {
-          const pinnedHeight = pinRef.current.offsetHeight;
+        const description = descriptionRef.current;
+        const pin = pinRef.current;
+        if (description && pin) {
+          const pinnedHeight = pin.offsetHeight;
           return `+=${Math.max(description.scrollHeight - pinnedHeight * multiplier, 0)}`;
         }
         return "+=0";
@@ -64,11 +63,13 @@ function ProjectsPreview() {
   const imagesContainerRef = useRef<HTMLDivElement>(null);
   const homeImgRef = useRef<HTMLDivElement>(null);
   const userImgRef = useRef<HTMLDivElement>(null);
+  const memeableDescriptionRef = useRef<HTMLDivElement | null>(null);
 
   // Refs for second section
   const secondImagesContainerRef = useRef<HTMLDivElement>(null);
   const secondHomeImgRef = useRef<HTMLDivElement>(null);
   const secondUserImgRef = useRef<HTMLDivElement>(null);
+  const pixelArtDescriptionRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     // First Section Animations
@@ -80,8 +81,6 @@ function ProjectsPreview() {
         return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
       },
       () => 200,
-      "top 90%",
-      "bottom 70%",
     );
 
     animateImage(
@@ -96,19 +95,15 @@ function ProjectsPreview() {
           : 0;
       },
       () => 200,
-      "top 90%",
-      "bottom 70%",
     );
 
-    setupPinning(imagesContainerRef, "memeable-description", 0.8);
+    setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
 
     // Second Section Animations
     animateImage(
       secondUserImgRef,
       () => 0,
       () => 100,
-      "top 90%",
-      "bottom 70%",
     );
 
     animateImage(
@@ -120,32 +115,26 @@ function ProjectsPreview() {
         const gap = 40;
         return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
       },
-      "top 90%",
-      "bottom 70%",
     );
 
-    setupPinning(secondImagesContainerRef, "second-description", 0.9);
+    setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.9);
   }, []);
 
   return (
     <section className="pin-container">
       <MemeableSection
         images={memeableImages}
-        descriptionClass="memeable-description text-justify"
-        imagesContainerClass="images-container"
-        wrapperClass="content-wrapper"
         imagesContainerRef={imagesContainerRef}
         homeImgRef={homeImgRef}
         userImgRef={userImgRef}
+        descriptionRef={memeableDescriptionRef}
       />
       <PixelArtSection
         images={minecraftImages}
-        descriptionClass="second-description text-justify"
-        imagesContainerClass="second-images-container"
-        wrapperClass="second-content-wrapper"
         secondImagesContainerRef={secondImagesContainerRef}
         secondHomeImgRef={secondHomeImgRef}
         secondUserImgRef={secondUserImgRef}
+        descriptionRef={pixelArtDescriptionRef}
       />
     </section>
   );

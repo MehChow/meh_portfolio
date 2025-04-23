@@ -27,7 +27,7 @@ export const MemeableSection = ({
           className={className}
           ref={className === "memeable-home-img" ? homeImgRef : userImgRef}
         >
-          <Image src={src} alt="" fill className="rounded-md" />
+          <Image src={src} alt="" fill className="rounded-md" sizes="100%" />
         </div>
       ))}
     </div>

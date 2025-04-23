@@ -79,22 +79,30 @@ function OutroSection() {
   }, [pathname]);
 
   return (
-    <section className="h-[100vh] flex flex-col justify-center items-center">
+    <section className="flex h-[100vh] flex-col items-center justify-center">
       <div className="congrats-container">
         <div className="congrats-text-wrapper">
           <span className="text-8xl text-white">CONGRATULATIONS!!</span>
-          <span className="text-4xl text-white">You have been blessed by DORO</span>
+          <span className="text-4xl text-white">
+            You have been blessed by DORO
+          </span>
         </div>
       </div>
 
-      <div className="w-92 h-92 relative outro-doro">
+      <div className="outro-doro relative h-92 w-92">
         <Link
           href="/dev-skills"
-          className="outro-doro-text hover:scale-105 transition-all duration-300"
+          className="outro-doro-text transition-all duration-300 hover:scale-105"
         >
           GO!!!!!
         </Link>
-        <Image src="/life/game/doro1.png" alt="" fill className="object-contain" />
+        <Image
+          src="/life/game/doro1.png"
+          alt=""
+          fill
+          className="object-contain"
+          sizes="100%"
+        />
       </div>
 
       <div className="explore-more-container">
@@ -102,7 +110,7 @@ function OutroSection() {
           Now go{" "}
           <Link
             href="/dev-skills"
-            className="text-purple-300 hover:opacity-80 transition-all duration-300"
+            className="text-purple-300 transition-all duration-300 hover:opacity-80"
           >
             explore more
           </Link>

@@ -7,6 +7,7 @@ import { MemeableSection } from "./memeable";
 import { PixelArtSection } from "./pixel-art";
 import { memeableImages, minecraftImages } from "./image-config";
 import { RefObject, useRef } from "react";
+import useDimension from "@/hooks/use-dimension";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +72,8 @@ function ProjectsPreview() {
   const secondUserImgRef = useRef<HTMLDivElement>(null);
   const pixelArtDescriptionRef = useRef<HTMLDivElement | null>(null);
 
+  const { height, width } = useDimension();
+
   useGSAP(() => {
     // First Section Animations
     animateImage(
@@ -89,7 +92,7 @@ function ProjectsPreview() {
         const container = imagesContainerRef.current;
         const img1 = userImgRef.current;
         const img2 = homeImgRef.current;
-        const gap = 80;
+        const gap = width > 1500 ? 80 : 40;
         return container && img1 && img2
           ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
           : 0;
@@ -97,7 +100,11 @@ function ProjectsPreview() {
       () => 200,
     );
 
-    setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
+    setupPinning(
+      imagesContainerRef,
+      memeableDescriptionRef,
+      width > 1500 ? 0.8 : 0.7,
+    );
 
     // Second Section Animations
     animateImage(
@@ -112,7 +119,7 @@ function ProjectsPreview() {
       () => {
         const img1 = secondUserImgRef.current;
         const img2 = secondHomeImgRef.current;
-        const gap = 40;
+        const gap = width > 1500 ? 40 : 20;
         return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
       },
     );

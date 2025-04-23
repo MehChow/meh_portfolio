@@ -44,6 +44,11 @@ $description-color: aquamarine;
   &.memeable-user-img {
     transform: translateX(-250%) translateY(-10%) rotateZ(30deg);
   }
+
+  @media (max-width: 1500px) {
+    width: 250px;
+    height: 500px;
+  }
 }
 
 .pixelart-kronii-img,

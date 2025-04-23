@@ -83,7 +83,7 @@ export const PixelArtSection = ({
               : secondUserImgRef
           }
         >
-          <Image src={src} alt="" fill className="rounded-md" />
+          <Image src={src} alt="" fill className="rounded-md" sizes="100%" />
         </div>
       ))}
     </div>

@@ -10,14 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Card({ src, alt, label, objectPosition }: CardProps) {
   return (
-    <div className="h-[600px] hover:w-[50%] w-1/5 relative rounded-4xl transition-all duration-300 cursor-pointer flex justify-center items-center group">
+    <div className="group relative flex h-[600px] w-1/5 cursor-pointer items-center justify-center rounded-4xl transition-all duration-300 hover:w-[50%]">
       <Image
         src={src}
         alt={alt}
+        sizes="100%"
         fill
-        className={`rounded-4xl object-cover hover:opacity-50 transition-all duration-300 ${objectPosition}`}
+        className={`rounded-4xl object-cover transition-all duration-300 hover:opacity-50 ${objectPosition}`}
       />
-      <p className="absolute opacity-0 text-4xl font-bold text-white tracking-widest group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+      <p className="pointer-events-none absolute text-4xl font-bold tracking-widest text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
         {label}
       </p>
     </div>
@@ -44,11 +45,11 @@ function LifePreview() {
   });
 
   return (
-    <section className="flex p-8 justify-center items-center flex-col gap-8 pt-20">
-      <h2 className="text-8xl text-center mb-8 text-white">L I F E</h2>
+    <section className="flex flex-col items-center justify-center gap-8 p-8 pt-20">
+      <h2 className="mb-8 text-center text-8xl text-white">L I F E</h2>
 
-      <div className="w-full flex items-center">
-        <div className="flex gap-4 justify-center items-center w-full life-card-container">
+      <div className="flex w-full items-center">
+        <div className="life-card-container flex w-full items-center justify-center gap-4">
           {cards.map((card, index) => (
             <Card
               key={index}

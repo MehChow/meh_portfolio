@@ -9,27 +9,17 @@ import { memeableImages, minecraftImages } from "./image-config";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ImageConfig {
-  className: string;
-  src: string;
-  xPercent: number;
-  yPercent: number;
-  start: string;
-  end: string;
-}
-
-// Reusable function to animate an image
 const animateImage = (
   className: string,
-  xPercent: number,
-  yPercent: number,
+  targetXFunc: () => number,
+  targetYFunc: () => number,
   start: string,
-  end: string
+  end: string,
 ) => {
   gsap.to(`.${className}`, {
-    xPercent,
-    yPercent,
-    rotateZ: 0,
+    x: targetXFunc, // Horizontal slide
+    y: targetYFunc, // Downward motion for wave effect
+    rotateZ: 0, // Rotate back to 0
     duration: 2.5,
     ease: "power1.out",
     scrollTrigger: {
@@ -38,6 +28,7 @@ const animateImage = (
       start,
       end,
       scrub: 1,
+      invalidateOnRefresh: true,
     },
   });
 };
@@ -47,7 +38,7 @@ const setupPinning = (
   triggerClass: string,
   pinClass: string,
   descriptionClass: string,
-  multiplier: number
+  multiplier: number,
 ) => {
   ScrollTrigger.create({
     trigger: `.${triggerClass}`,
@@ -71,18 +62,76 @@ const setupPinning = (
 
 function ProjectsPreview() {
   useGSAP(() => {
-    animateImage("home-img", 350, 45, "top 90%", "bottom 70%");
-    animateImage("user-img", 350, 40, "top 90%", "bottom 70%");
+    animateImage(
+      "user-img",
+      () => {
+        const container = document.querySelector(
+          ".images-container",
+        ) as HTMLElement;
+        const img1 = document.querySelector(".user-img") as HTMLElement;
+        return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
+      },
+      () => 200, // Move downward for wave effect
+      "top 90%",
+      "bottom 70%",
+    );
+
+    // img2 (home-img) to the left of img1 with a gap
+    animateImage(
+      "home-img",
+      () => {
+        const container = document.querySelector(
+          ".images-container",
+        ) as HTMLElement;
+        const img1 = document.querySelector(".user-img") as HTMLElement;
+        const img2 = document.querySelector(".home-img") as HTMLElement;
+        const gap = 80;
+        return container && img1 && img2
+          ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
+          : 0;
+      },
+      () => 200, // Same downward motion
+      "top 90%",
+      "bottom 70%",
+    );
 
     // Setup pinning for first section
-    setupPinning("pin-container", "images-container", "memeable-description", 0.8);
+    setupPinning(
+      "pin-container",
+      "images-container",
+      "memeable-description",
+      0.8,
+    );
 
-    // Animate second section images
-    animateImage("second-home-img", -350, 25, "top 90%", "bottom 70%");
-    animateImage("second-user-img", -350, 150, "top 90%", "bottom 70%");
+    // img1 (second-user-img) sticks to the left border
+    animateImage(
+      "second-user-img",
+      () => 0, // Stick to left border
+      () => 100, // Move downward for wave effect
+      "top 90%",
+      "bottom 70%",
+    );
 
-    // Setup pinning for second section
-    setupPinning("second-content-wrapper", "second-images-container", "second-description", 0.9);
+    // img2 (second-home-img) below img1 with a gap
+    animateImage(
+      "second-home-img",
+      () => 0, // Stick to left border
+      () => {
+        const img1 = document.querySelector(".second-user-img") as HTMLElement;
+        const img2 = document.querySelector(".second-home-img") as HTMLElement;
+        const gap = 40;
+        return img1 && img2 ? img1.offsetHeight + gap + 100 : 100; // Vertical stacking + downward motion
+      },
+      "top 90%",
+      "bottom 70%",
+    );
+
+    setupPinning(
+      "second-content-wrapper",
+      "second-images-container",
+      "second-description",
+      0.9,
+    );
   }, []);
 
   return (

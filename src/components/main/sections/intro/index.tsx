@@ -27,7 +27,7 @@ const ImageItem = ({ className, src }: { className: string; src: string }) => (
       fill
       alt=""
       className="rounded-2xl object-cover"
-      sizes="auto"
+      sizes="100%"
     />
   </div>
 );

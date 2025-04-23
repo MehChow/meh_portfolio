@@ -55,6 +55,7 @@ const setupPinning = (
       },
       pin: pinRef.current,
       pinSpacing: true,
+      invalidateOnRefresh: true,
     });
   }
 };
@@ -72,7 +73,7 @@ function ProjectsPreview() {
   const secondUserImgRef = useRef<HTMLDivElement>(null);
   const pixelArtDescriptionRef = useRef<HTMLDivElement | null>(null);
 
-  const { height, width } = useDimension();
+  const { width } = useDimension();
 
   useGSAP(() => {
     // First Section Animations
@@ -100,11 +101,7 @@ function ProjectsPreview() {
       () => 200,
     );
 
-    setupPinning(
-      imagesContainerRef,
-      memeableDescriptionRef,
-      width > 1500 ? 0.8 : 0.7,
-    );
+    setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
 
     // Second Section Animations
     animateImage(
@@ -124,7 +121,7 @@ function ProjectsPreview() {
       },
     );
 
-    setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.9);
+    setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.88);
   }, []);
 
   return (

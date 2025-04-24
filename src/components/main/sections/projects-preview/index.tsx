@@ -88,8 +88,8 @@ function ProjectsPreview() {
   useGSAP(() => {
     let mm = gsap.matchMedia();
 
+    // Desktop animation
     mm.add("(min-width: 1200px)", () => {
-      // First Section Animations
       animateDesktopMemeable(userImgRef, -10, 30, () => {
         const container = imagesContainerRef.current;
         const img1 = userImgRef.current;
@@ -138,13 +138,13 @@ function ProjectsPreview() {
         userImgRef={userImgRef}
         descriptionRef={memeableDescriptionRef}
       />
-      <PixelArtSection
+      {/* <PixelArtSection
         images={minecraftImages}
         secondImagesContainerRef={secondImagesContainerRef}
         secondHomeImgRef={secondHomeImgRef}
         secondUserImgRef={secondUserImgRef}
         descriptionRef={pixelArtDescriptionRef}
-      />
+      /> */}
     </section>
   );
 }

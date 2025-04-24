@@ -56,6 +56,16 @@ $description-color: aquamarine;
     width: 250px;
     height: 500px;
   }
+
+  @media (max-width: 1199px) {
+    width: auto;
+    height: 50%;
+    aspect-ratio: 9/16;
+    top: 60%;
+    left: 50%;
+    transform-origin: center -50%;
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
 }
 
 .pixelart-kronii-img,

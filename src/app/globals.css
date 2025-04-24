@@ -122,10 +122,10 @@
 }
 
 @theme {
-  --breakpoint-large: 112rem;
-  --breakpoint-medium: 75rem;
-  --breakpoint-small: 50rem;
-  --breakpoint-mobile: 40rem;
+  --breakpoint-large: 112rem; /* 1728px */
+  --breakpoint-medium: 75rem; /* 1200px */
+  --breakpoint-small: 50rem; /* 800px */
+  --breakpoint-mobile: 40rem; /* 640px */
 }
 
 @layer utilities {

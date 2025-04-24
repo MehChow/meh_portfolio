@@ -27,11 +27,17 @@ export const MemeableSection = ({
           className={className}
           ref={className === "memeable-home-img" ? homeImgRef : userImgRef}
         >
-          <Image src={src} alt="" fill className="rounded-md" sizes="100%" />
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="medium:rounded-md rounded-none"
+            sizes="100%"
+          />
         </div>
       ))}
     </div>
-    <div className="description-container pr-16">
+    <div className="description-container medium:pr-16 pr-0">
       <div className="memeable-description text-justify" ref={descriptionRef}>
         <h1 className="description-title">Memeable</h1>
         <h2 className="description-subtitle">Full-stack side project📱</h2>
@@ -48,7 +54,7 @@ export const MemeableSection = ({
           users can set a background music in their profile✨
         </p>
         <h3 className="description-section-title">Tech Stack</h3>
-        <div className="grid grid-cols-2 grid-rows-3">
+        <div className="medium:grid-cols-2 medium:grid-rows-3 medium:place-self-auto grid grid-rows-6 place-self-center">
           {SKILLS.map((skill, index) => (
             <SkillItem key={index} {...skill} />
           ))}

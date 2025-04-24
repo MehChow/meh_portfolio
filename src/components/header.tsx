@@ -15,10 +15,18 @@ function Header() {
   }, []);
 
   return (
-    <header className="flex items-center justify-center top-0 left-0 right-0 h-24 fixed max-[1200px]:backdrop-blur-none backdrop-blur-sm z-50 bg-transparent">
+    <header className="fixed top-0 right-0 left-0 z-50 flex h-24 items-center justify-center bg-transparent backdrop-blur-sm max-[1200px]:backdrop-blur-none">
       <Logo />
       {/* Prevent initial flash of wrong header loaded */}
-      {isMounted ? width > 1200 ? <NavBar /> : <Menu /> : <div className="flex-1" />}
+      {isMounted ? (
+        width >= 1200 ? (
+          <NavBar />
+        ) : (
+          <Menu />
+        )
+      ) : (
+        <div className="flex-1" />
+      )}
     </header>
   );
 }

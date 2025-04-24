@@ -76,32 +76,36 @@ function ProjectsPreview() {
   const { width } = useDimension();
 
   useGSAP(() => {
-    // First Section Animations
-    animateImage(
-      userImgRef,
-      () => {
-        const container = imagesContainerRef.current;
-        const img1 = userImgRef.current;
-        return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
-      },
-      () => 200,
-    );
+    let mm = gsap.matchMedia();
 
-    animateImage(
-      homeImgRef,
-      () => {
-        const container = imagesContainerRef.current;
-        const img1 = userImgRef.current;
-        const img2 = homeImgRef.current;
-        const gap = width > 1500 ? 80 : 40;
-        return container && img1 && img2
-          ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
-          : 0;
-      },
-      () => 200,
-    );
-
-    setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
+    mm.add("(min-width: 1200px)", () => {
+      // First Section Animations
+      animateImage(
+        userImgRef,
+        () => {
+          const container = imagesContainerRef.current;
+          const img1 = userImgRef.current;
+          return container && img1
+            ? container.offsetWidth - img1.offsetWidth
+            : 0;
+        },
+        () => 200,
+      );
+      animateImage(
+        homeImgRef,
+        () => {
+          const container = imagesContainerRef.current;
+          const img1 = userImgRef.current;
+          const img2 = homeImgRef.current;
+          const gap = width > 1500 ? 80 : 40;
+          return container && img1 && img2
+            ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
+            : 0;
+        },
+        () => 200,
+      );
+      setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
+    });
 
     // Second Section Animations
     animateImage(
@@ -109,7 +113,6 @@ function ProjectsPreview() {
       () => 0,
       () => 100,
     );
-
     animateImage(
       secondHomeImgRef,
       () => 0,
@@ -120,7 +123,6 @@ function ProjectsPreview() {
         return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
       },
     );
-
     setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.88);
   }, []);
 

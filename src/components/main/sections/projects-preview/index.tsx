@@ -11,15 +11,25 @@ import useDimension from "@/hooks/use-dimension";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const animateImage = (
+const animateDesktopMemeable = (
   imgRef: RefObject<HTMLDivElement | null>,
+  yPercent: number,
+  rotateZ: number,
   targetXFunc: () => number,
-  targetYFunc: () => number,
 ) => {
   if (imgRef.current) {
+    gsap.set(imgRef.current, {
+      // Initially outside viewport
+      xPercent: -200,
+      yPercent,
+      rotateZ,
+    });
+
     gsap.to(imgRef.current, {
       x: targetXFunc,
-      y: targetYFunc,
+      xPercent: 0,
+      y: 200,
+      yPercent: 0,
       rotateZ: 0,
       duration: 2.5,
       ease: "power1.out",
@@ -80,50 +90,43 @@ function ProjectsPreview() {
 
     mm.add("(min-width: 1200px)", () => {
       // First Section Animations
-      animateImage(
-        userImgRef,
-        () => {
-          const container = imagesContainerRef.current;
-          const img1 = userImgRef.current;
-          return container && img1
-            ? container.offsetWidth - img1.offsetWidth
-            : 0;
-        },
-        () => 200,
-      );
-      animateImage(
-        homeImgRef,
-        () => {
-          const container = imagesContainerRef.current;
-          const img1 = userImgRef.current;
-          const img2 = homeImgRef.current;
-          const gap = width > 1500 ? 80 : 40;
-          return container && img1 && img2
-            ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
-            : 0;
-        },
-        () => 200,
-      );
+      animateDesktopMemeable(userImgRef, -10, 30, () => {
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
+
+        // offsetWidth =  the layout width of an element as an integer
+        return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
+      });
+      animateDesktopMemeable(homeImgRef, -15, 45, () => {
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
+        const img2 = homeImgRef.current;
+        const gap = width > 1500 ? 80 : 40;
+
+        return container && img1 && img2
+          ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
+          : 0;
+      });
       setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
     });
 
     // Second Section Animations
-    animateImage(
-      secondUserImgRef,
-      () => 0,
-      () => 100,
-    );
-    animateImage(
-      secondHomeImgRef,
-      () => 0,
-      () => {
-        const img1 = secondUserImgRef.current;
-        const img2 = secondHomeImgRef.current;
-        const gap = width > 1500 ? 40 : 20;
-        return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
-      },
-    );
-    setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.88);
+    // animateImage(
+    //   secondUserImgRef,
+    //   () => 0,
+    //   () => 100,
+    // );
+    // animateImage(
+    //   secondHomeImgRef,
+    //   () => 0,
+    //   () => {
+    //     const img1 = secondUserImgRef.current;
+    //     const img2 = secondHomeImgRef.current;
+    //     const gap = width > 1500 ? 40 : 20;
+    //     return img1 && img2 ? img1.offsetHeight + gap + 100 : 100;
+    //   },
+    // );
+    // setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 0.88);
   }, []);
 
   return (

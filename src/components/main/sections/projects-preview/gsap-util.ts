@@ -153,3 +153,29 @@ export const setupPinning = (
     });
   }
 };
+
+export const fadeUpDescription = (
+  descriptionRef: RefObject<HTMLDivElement | null>,
+) => {
+  if (descriptionRef.current) {
+    gsap.set(descriptionRef.current, {
+      opacity: 0,
+      y: 100,
+    });
+
+    gsap.to(descriptionRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 1.5,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: descriptionRef.current,
+        toggleActions: "restart none none none",
+        start: "top 90%",
+        end: "top 50%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
+};

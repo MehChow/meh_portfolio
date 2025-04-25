@@ -11,6 +11,7 @@ import {
   animateDesktopPixelart,
   animateMediumMemeable,
   animateMediumPixelart,
+  fadeUpDescription,
   setupPinning,
 } from "./gsap-util";
 
@@ -65,6 +66,10 @@ function ProjectsPreview() {
       // Pixel arts
       animateMediumPixelart(secondImagesContainerRef, 45, -75);
     });
+
+    // Fade up description
+    fadeUpDescription(memeableDescriptionRef);
+    fadeUpDescription(pixelArtDescriptionRef);
   }, []);
 
   return (

@@ -45,6 +45,33 @@ const animateDesktopMemeable = (
   }
 };
 
+const animateMediumMemeable = (
+  imgRef: RefObject<HTMLDivElement | null>,
+  init_rotateZ: number,
+  end_rotateZ: number,
+) => {
+  if (imgRef.current) {
+    gsap.set(imgRef.current, {
+      // Initially outside viewport
+      rotateZ: init_rotateZ,
+      transformOrigin: "center -100%",
+    });
+
+    gsap.to(imgRef.current, {
+      rotateZ: end_rotateZ,
+      duration: 2.5,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: imgRef.current,
+        toggleActions: "restart none none none",
+        start: "45% 35%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
+};
+
 const setupPinning = (
   pinRef: RefObject<HTMLDivElement | null>,
   descriptionRef: RefObject<HTMLDivElement | null>,
@@ -108,6 +135,11 @@ function ProjectsPreview() {
           : 0;
       });
       setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
+    });
+
+    // Medium animation
+    mm.add("(max-width: 1199px)", () => {
+      animateMediumMemeable(imagesContainerRef, 45, -35);
     });
 
     // Second Section Animations

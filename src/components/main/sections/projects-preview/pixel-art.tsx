@@ -21,7 +21,9 @@ export const PixelArtSection = ({
   <div className="content-wrapper relative">
     <div className="description-container medium:pl-16 pl-0">
       <div className="second-description text-justify" ref={descriptionRef}>
-        <h1 className="description-title text-nowrap">Minecraft Pixelart</h1>
+        <h1 className="description-title small:text-nowrap text-wrap">
+          Minecraft Pixelart
+        </h1>
         <h2 className="description-subtitle">Life achievement for sure🔥</h2>
         <p>
           Using Mapartcraft to generate a pixelized art of the original image,

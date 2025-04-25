@@ -20,7 +20,7 @@ export const SKILLS: Skill[] = [
 ];
 
 export const SkillItem = ({ name, icon, bgWhite }: Skill) => (
-  <div className="flex gap-2">
+  <div className="mb-8 flex gap-2">
     <div className="relative flex h-8 w-8 items-center justify-center rounded-full">
       <Image
         src={icon}

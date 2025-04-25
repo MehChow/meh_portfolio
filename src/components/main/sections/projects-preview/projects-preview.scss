@@ -44,24 +44,32 @@ $description-color: aquamarine;
   }
 }
 
-// Images
+// Memeable images
 .memeable-home-img,
 .memeable-user-img {
-  width: 300px;
-  height: 600px;
+  width: auto;
+  height: 60%;
+  aspect-ratio: 1/2;
   position: absolute;
   top: 0;
   border-radius: 0.25rem;
 
-  @media (max-width: 1500px) {
-    width: 250px;
-    height: 500px;
+  // Desktop
+  &.memeable-home-img {
+    left: -5%;
   }
 
+  // Desktop but smaller screen, adjust gap
+  @media (max-width: 1350px) {
+    &.memeable-home-img {
+      left: -2%;
+    }
+  }
+
+  // Medium screen
   @media (max-width: 1199px) {
     width: 40%;
     height: auto;
-    aspect-ratio: 1/2;
     opacity: 0.3;
     top: 50%;
 
@@ -76,6 +84,7 @@ $description-color: aquamarine;
     }
   }
 
+  // Small screen
   @media (max-width: 799px) {
     top: 45%;
     width: 50%;
@@ -85,7 +94,9 @@ $description-color: aquamarine;
     }
   }
 
+  // Mobile screen
   @media (max-width: 639px) {
+    top: 40%;
     width: 60%;
 
     &.memeable-home-img {
@@ -118,15 +129,20 @@ $description-color: aquamarine;
   position: relative;
   max-width: 600px;
   width: 100%;
-  padding: 2rem;
   z-index: 10;
-  margin: 100px auto auto auto;
+  padding-inline: 2rem;
+  margin-left: 1rem;
+  margin-top: 150px;
   box-sizing: border-box;
 
   p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: white;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
   }
 
   .description-title {

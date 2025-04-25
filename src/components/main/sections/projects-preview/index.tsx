@@ -7,7 +7,6 @@ import { MemeableSection } from "./memeable";
 import { PixelArtSection } from "./pixel-art";
 import { memeableImages, minecraftImages } from "./image-config";
 import { RefObject, useRef } from "react";
-import useDimension from "@/hooks/use-dimension";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +74,6 @@ const animateMediumMemeable = (
 const setupPinning = (
   pinRef: RefObject<HTMLDivElement | null>,
   descriptionRef: RefObject<HTMLDivElement | null>,
-  multiplier: number,
 ) => {
   if (pinRef.current && descriptionRef.current) {
     ScrollTrigger.create({
@@ -84,9 +82,17 @@ const setupPinning = (
       end: () => {
         const description = descriptionRef.current;
         const pin = pinRef.current;
+        // Confirm both containers exist
         if (description && pin) {
           const pinnedHeight = pin.offsetHeight;
-          return `+=${Math.max(description.scrollHeight - pinnedHeight * multiplier, 0)}`;
+          // Calculate the pixel value of 1vh
+          const oneVhInPixels = pinnedHeight / 100;
+
+          // Calculate the pixel height of 20vh (orange indicator)
+          const pinScrollOffset = 20 * oneVhInPixels;
+
+          // 150 for matching the margin-top in memeable-description, 10 for minor alignment
+          return `+=${Math.max(description.scrollHeight - pinnedHeight + pinScrollOffset + (150 - 10), 0)}`;
         }
         return "+=0";
       },
@@ -110,12 +116,10 @@ function ProjectsPreview() {
   const secondUserImgRef = useRef<HTMLDivElement>(null);
   const pixelArtDescriptionRef = useRef<HTMLDivElement | null>(null);
 
-  const { width } = useDimension();
-
   useGSAP(() => {
     let mm = gsap.matchMedia();
 
-    // Desktop animation
+    // Memeable desktop animation
     mm.add("(min-width: 1200px)", () => {
       animateDesktopMemeable(userImgRef, -10, 30, () => {
         const container = imagesContainerRef.current;
@@ -128,16 +132,15 @@ function ProjectsPreview() {
         const container = imagesContainerRef.current;
         const img1 = userImgRef.current;
         const img2 = homeImgRef.current;
-        const gap = width > 1500 ? 80 : 40;
 
         return container && img1 && img2
-          ? container.offsetWidth - img1.offsetWidth - gap - img2.offsetWidth
+          ? container.offsetWidth - img1.offsetWidth - img2.offsetWidth
           : 0;
       });
-      setupPinning(imagesContainerRef, memeableDescriptionRef, 0.8);
+      setupPinning(imagesContainerRef, memeableDescriptionRef);
     });
 
-    // Medium animation
+    // Memeable medium animation
     mm.add("(max-width: 1199px)", () => {
       animateMediumMemeable(imagesContainerRef, 45, -35);
     });

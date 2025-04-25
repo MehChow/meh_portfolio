@@ -18,12 +18,10 @@ export const PixelArtSection = ({
   secondUserImgRef,
   descriptionRef,
 }: MinecraftSectionProps) => (
-  <div className="content-wrapper">
-    <div className="description-container pl-16">
+  <div className="content-wrapper relative">
+    <div className="description-container medium:pl-16 pl-0">
       <div className="second-description text-justify" ref={descriptionRef}>
-        <h1 className="description-title text-left text-nowrap">
-          Minecraft Pixel Art
-        </h1>
+        <h1 className="description-title text-nowrap">Minecraft Pixelart</h1>
         <h2 className="description-subtitle">Life achievement for sure🔥</h2>
         <p>
           Using Mapartcraft to generate a pixelized art of the original image,
@@ -72,7 +70,10 @@ export const PixelArtSection = ({
         </p>
       </div>
     </div>
-    <div className="images-container" ref={secondImagesContainerRef}>
+    <div
+      className="images-container medium:h-[100vh] medium:flex-none medium:items-baseline flex h-[100%] flex-col items-center justify-end"
+      ref={secondImagesContainerRef}
+    >
       {images.map(({ className, src }, index) => (
         <div
           key={index}

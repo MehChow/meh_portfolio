@@ -40,6 +40,7 @@ function LifePreview() {
         end: "top 20%", // End animation when top of container is 20% from top of viewport
         toggleActions: "restart none none none", // Play animation on enter
         scrub: 1,
+        invalidateOnRefresh: true,
       },
     });
   });

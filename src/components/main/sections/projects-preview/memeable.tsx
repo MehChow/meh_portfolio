@@ -20,7 +20,10 @@ export const MemeableSection = ({
   descriptionRef,
 }: MemeableSectionProps) => (
   <div className="content-wrapper">
-    <div className="images-container" ref={imagesContainerRef}>
+    <div
+      className="images-container medium:h-[100vh] h-[100%]"
+      ref={imagesContainerRef}
+    >
       {images.map(({ className, src }, index) => (
         <div
           key={index}

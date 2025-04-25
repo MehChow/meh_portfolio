@@ -21,7 +21,6 @@ $description-color: aquamarine;
 
 .images-container {
   position: relative;
-  height: 100vh;
   flex-shrink: 0;
   overflow: hidden;
   width: 50%;
@@ -31,13 +30,13 @@ $description-color: aquamarine;
     overflow: visible;
     position: absolute;
     width: 100%;
-    height: 100%;
   }
 }
 
 .description-container {
   position: relative;
   width: 50%;
+  padding-top: 150px;
 
   @media (max-width: 1199px) {
     width: 100%;
@@ -71,7 +70,7 @@ $description-color: aquamarine;
     width: 40%;
     height: auto;
     opacity: 0.3;
-    top: 50%;
+    top: 30%;
 
     &.memeable-user-img {
       left: 70%;
@@ -86,7 +85,6 @@ $description-color: aquamarine;
 
   // Small screen
   @media (max-width: 799px) {
-    top: 45%;
     width: 50%;
 
     &.memeable-home-img {
@@ -96,7 +94,6 @@ $description-color: aquamarine;
 
   // Mobile screen
   @media (max-width: 639px) {
-    top: 40%;
     width: 60%;
 
     &.memeable-home-img {
@@ -107,19 +104,45 @@ $description-color: aquamarine;
 
 .pixelart-kronii-img,
 .pixelart-suisei-img {
-  width: 650px;
-  height: auto;
+  width: auto;
+  height: 35%;
   aspect-ratio: 16/9;
   position: absolute;
-  top: 0;
   border-radius: 0.25rem;
 
-  &.pixelart-kronii-img {
-    transform: translateX(250%) translateY(15%) rotateZ(45deg);
+  &.pixelart-suisei-img {
+    top: 10%;
   }
 
-  &.pixelart-suisei-img {
-    transform: translateX(250%) translateY(10%) rotateZ(45deg);
+  &.pixelart-kronii-img {
+    top: 50%;
+  }
+
+  // Medium screen
+  @media (max-width: 1199px) {
+    width: 60%;
+    height: auto;
+    opacity: 0.3;
+    position: relative;
+
+    &.pixelart-suisei-img {
+      top: 0%;
+    }
+
+    &.pixelart-kronii-img {
+      top: 0%;
+      margin-top: 2rem;
+    }
+  }
+
+  // Small screen
+  @media (max-width: 799px) {
+    width: 70%;
+  }
+
+  // Mobile screen
+  @media (max-width: 639px) {
+    width: 80%;
   }
 }
 
@@ -131,9 +154,16 @@ $description-color: aquamarine;
   width: 100%;
   z-index: 10;
   padding-inline: 2rem;
-  margin-left: 1rem;
-  margin-top: 150px;
   box-sizing: border-box;
+
+  &.memeable-description {
+    margin-left: 1rem;
+  }
+
+  &.second-description {
+    justify-self: right;
+    margin-right: 3rem;
+  }
 
   p {
     font-size: 1.5rem;
@@ -170,9 +200,21 @@ $description-color: aquamarine;
     }
   }
 
+  @media (max-width: 1280px) {
+    &.second-description {
+      margin-right: 3.5rem;
+    }
+  }
+
   @media (max-width: 1199px) {
     max-width: none;
     margin: 0;
     text-align: center;
+
+    &.memeable-description,
+    &.second-description {
+      margin: 0;
+      padding-inline: 4rem;
+    }
   }
 }

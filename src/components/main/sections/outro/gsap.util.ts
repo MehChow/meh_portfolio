@@ -41,30 +41,30 @@ export const animateOutroSection = (pathname: string) => {
     },
   });
 
-  if (pathname === "/") {
-    gsap.to(".outro-doro", {
-      y: window.innerHeight * 1.1,
-      x: window.innerWidth * 0.12,
-      ease: "power4.out",
-      duration: 1,
-      delay: 1,
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top top",
-        end: "top top",
-        toggleActions: "restart none reverse none",
-      },
-    });
+  // if (pathname === "/") {
+  //   gsap.to(".outro-doro", {
+  //     y: window.innerHeight * 1.1,
+  //     x: window.innerWidth * 0.12,
+  //     ease: "power4.out",
+  //     duration: 1,
+  //     delay: 1,
+  //     scrollTrigger: {
+  //       trigger: "footer",
+  //       start: "top top",
+  //       end: "top top",
+  //       toggleActions: "restart none reverse none",
+  //     },
+  //   });
 
-    gsap.to(".outro-doro-text", {
-      opacity: 1,
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top top",
-        end: "top top",
-        toggleActions: "restart none none none",
-        scrub: 1,
-      },
-    });
-  }
+  //   gsap.to(".outro-doro-text", {
+  //     opacity: 1,
+  //     scrollTrigger: {
+  //       trigger: "footer",
+  //       start: "top top",
+  //       end: "top top",
+  //       toggleActions: "restart none none none",
+  //       scrub: 1,
+  //     },
+  //   });
+  // }
 };

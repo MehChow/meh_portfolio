@@ -48,7 +48,7 @@ export const animateLifeCards = () => {
   });
 };
 
-export const fadeUpTitle = (titleRef: RefObject<HTMLDivElement | null>) => {
+export const fadeUpTitle = (titleRef: RefObject<HTMLHeadingElement | null>) => {
   if (titleRef.current) {
     gsap.set(titleRef.current, {
       opacity: 0,

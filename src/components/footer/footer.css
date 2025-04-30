@@ -41,6 +41,12 @@
   display: flex;
   flex-direction: column;
   padding-right: 6rem;
+  transition-property: padding-right;
+  transition-duration: 0.3s;
+
+  @media (min-width: 2300px) {
+    padding-right: 10%;
+  }
 
   @media (max-width: 1499px) {
     width: 50%;

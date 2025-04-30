@@ -57,23 +57,35 @@ function GalleryParallax() {
   }, []);
 
   return (
-    <section className="h-[175vh] relative">
+    <section className="relative h-[175vh]">
       <div
         ref={container}
-        className="h-full flex flex-row gap-4 p-4 overflow-hidden relative opacity-50"
+        className="relative flex h-full flex-row gap-4 overflow-hidden p-4 opacity-50"
       >
         {/* Gallery content */}
         {columnCount >= 1 && (
-          <Column images={[galleryImages[0], galleryImages[1], galleryImages[2]]} y={y1} />
+          <Column
+            images={[galleryImages[0], galleryImages[1], galleryImages[2]]}
+            y={y1}
+          />
         )}
         {columnCount >= 2 && (
-          <Column images={[galleryImages[3], galleryImages[4], galleryImages[5]]} y={y2} />
+          <Column
+            images={[galleryImages[3], galleryImages[4], galleryImages[5]]}
+            y={y2}
+          />
         )}
         {columnCount >= 3 && (
-          <Column images={[galleryImages[6], galleryImages[7], galleryImages[8]]} y={y3} />
+          <Column
+            images={[galleryImages[6], galleryImages[7], galleryImages[8]]}
+            y={y3}
+          />
         )}
         {columnCount >= 4 && (
-          <Column images={[galleryImages[9], galleryImages[10], galleryImages[11]]} y={y4} />
+          <Column
+            images={[galleryImages[9], galleryImages[10], galleryImages[11]]}
+            y={y4}
+          />
         )}
         <div className="fade-overlay" />
       </div>

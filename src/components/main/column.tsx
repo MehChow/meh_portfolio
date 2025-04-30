@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { CldImage } from "next-cloudinary";
 import "@/components/main/styles/column.css";
 
 interface ColumnProps {
@@ -10,10 +10,22 @@ interface ColumnProps {
 function Column({ images, y = 0 }: ColumnProps) {
   return (
     <motion.div className="column" style={{ y }}>
-      {images.map((src, index) => {
+      {images.map((publicId, index) => {
         return (
-          <div key={index} className="w-full h-full relative overflow-hidden rounded-4xl">
-            <Image src={src} fill alt="image" className="object-cover" />
+          <div
+            key={index}
+            className="relative h-full w-full overflow-hidden rounded-4xl"
+          >
+            <CldImage
+              src={publicId}
+              fill
+              alt={`Gallery image ${index + 1}`}
+              className="object-cover"
+              loading="eager"
+              priority={index === 0}
+              format="auto" // Equivalent to f_auto
+              quality="auto" // Equivalent to q_auto
+            />
           </div>
         );
       })}

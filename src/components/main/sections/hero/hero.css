@@ -2,7 +2,7 @@
   font-size: 14rem; /* Large font size like in the image */
   font-weight: 900; /* Extra bold */
   text-transform: uppercase; /* Match the uppercase style */
-  background: url("/image-swiper/herta_main.jpg") no-repeat center center; /* Path to your image */
+  background: url("/herta_main.jpg") no-repeat center center; /* Path to your image */
   background-size: cover; /* Ensure the image covers the text */
   color: transparent; /* Make text transparent to show the background */
   -webkit-background-clip: text; /* Clip the background to the text shape (for Webkit browsers) */

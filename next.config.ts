@@ -7,8 +7,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        port: "", // Leave empty for default HTTPS port
-        pathname: "/**", // Allow all paths under res.cloudinary.com
+        pathname: "/drixejwkb/**", // Allow all paths under res.cloudinary.com
       },
     ],
   },

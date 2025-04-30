@@ -5,7 +5,6 @@
   ); /* Use transform instead of scale property for GSAP compatibility */
   position: relative;
   z-index: 10;
-  will-change: transform, opacity; /* Optimize for animation performance */
 }
 
 .outro-doro-text {
@@ -17,8 +16,8 @@
   transform: translateX(-50%);
   font-size: 2.25rem;
   margin-bottom: 2rem;
-  will-change: transform, opacity;
   z-index: 10;
+  pointer-events: none;
 }
 
 .congrats-container {

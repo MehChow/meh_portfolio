@@ -1,19 +1,26 @@
+"use client";
+
 import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
 import "./outro.css";
 import Image from "next/image";
 import Link from "next/link";
-import { animateOutroSection } from "./gsap.util";
+import { animateDoro, animateOutroSection } from "./gsap.util";
+import { useRef } from "react";
 
 function OutroSection() {
   const pathname = usePathname();
+  const hasAnimatedDoro = useRef(false);
 
   useGSAP(() => {
-    animateOutroSection(pathname);
+    animateOutroSection();
+    if (pathname === "/" && !hasAnimatedDoro.current) {
+      animateDoro(hasAnimatedDoro);
+    }
   }, [pathname]);
 
   return (
-    <section className="flex h-[100vh] flex-col items-center justify-center">
+    <section className="small:h-[100vh] flex h-[75vh] flex-col items-center justify-center">
       <div className="congrats-container">
         <div className="congrats-text-wrapper">
           <span className="text-[clamp(2.5rem,5vw,8rem)] text-white">

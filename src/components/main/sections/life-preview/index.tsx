@@ -1,3 +1,5 @@
+"use client";
+
 import { useGSAP } from "@gsap/react";
 
 import "./life-preview.css";
@@ -17,7 +19,7 @@ function LifePreview() {
   return (
     <section className="medium:h-auto flex flex-col items-center justify-start gap-8 p-8 pt-20">
       <h2
-        className="medium:mb-8 mb-0 text-center text-8xl text-white"
+        className="medium:mb-8 mobile:text-8xl mb-0 text-center text-7xl text-white transition-all"
         ref={titleRef}
       >
         L I F E

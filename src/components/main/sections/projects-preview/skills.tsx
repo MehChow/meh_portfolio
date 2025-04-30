@@ -7,7 +7,11 @@ export interface Skill {
 }
 
 export const SKILLS: Skill[] = [
-  { name: "React Native", icon: "/dev-skills-icon/react-native.png", bgWhite: false },
+  {
+    name: "React Native",
+    icon: "/dev-skills-icon/react-native.png",
+    bgWhite: false,
+  },
   { name: "Firebase", icon: "/dev-skills-icon/firebase.png", bgWhite: false },
   { name: "MongoDB", icon: "/dev-skills-icon/mongo-db.png", bgWhite: true },
   { name: "Node.js", icon: "/dev-skills-icon/nodejs.png", bgWhite: true },
@@ -16,13 +20,16 @@ export const SKILLS: Skill[] = [
 ];
 
 export const SkillItem = ({ name, icon, bgWhite }: Skill) => (
-  <div className="flex gap-2">
-    <div className="w-8 h-8 flex justify-center items-center relative rounded-full">
+  <div className="mb-8 flex gap-2">
+    <div className="relative flex h-8 w-8 items-center justify-center rounded-full">
       <Image
         src={icon}
         alt={name}
         fill
-        className={bgWhite ? "bg-white rounded-full p-1 object-contain" : undefined}
+        sizes="auto"
+        className={
+          bgWhite ? "rounded-full bg-white object-contain p-1" : undefined
+        }
       />
     </div>
     <p>{name}</p>

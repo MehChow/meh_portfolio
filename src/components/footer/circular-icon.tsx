@@ -29,7 +29,7 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
   return (
     <div className="footer-icon-container">
       {/* Circular Image */}
-      <div className="relative w-50 h-50 rounded-full overflow-hidden z-10">
+      <div className="relative z-10 h-50 w-50 overflow-hidden rounded-full">
         <Image
           src={imageSrc}
           alt="Circular icon"
@@ -42,7 +42,7 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
 
       {/* Circular Text using SVG */}
       <svg
-        className="absolute w-full h-full"
+        className="absolute h-full w-full"
         viewBox="0 0 200 200"
         xmlns="http://www.w3.org/2000/svg"
       >

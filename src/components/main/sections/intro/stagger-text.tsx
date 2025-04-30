@@ -22,6 +22,7 @@ const StaggerText = ({ children }: StaggerTextProps) => {
         start: "top 100%",
         end: "bottom 70%",
         scrub: 1,
+        invalidateOnRefresh: true,
       },
     });
   }, []);
@@ -29,7 +30,10 @@ const StaggerText = ({ children }: StaggerTextProps) => {
   return (
     <div>
       {children.split("").map((char, index) => (
-        <span key={index} className={`inline-block ${char !== " " ? "stagger-text" : ""}`}>
+        <span
+          key={index}
+          className={`inline-block ${char !== " " ? "stagger-text" : ""}`}
+        >
           {char === " " ? "\u00A0\u00A0\u00A0\u00A0" : char}
         </span>
       ))}

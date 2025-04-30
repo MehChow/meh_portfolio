@@ -3,27 +3,38 @@ import Link from "next/link";
 
 function SocialBox() {
   return (
-    <div className="flex items-center gap-4 mt-2 opacity-80">
+    <div className="mt-2 flex items-center gap-4 opacity-80">
       <Link
         href="https://www.instagram.com/yeungmeh_/"
         target="_blank"
-        className="hover:opacity-50 transition-opacity"
+        className="transition-opacity hover:opacity-50"
       >
-        <Image src="/social/instagram-white.png" width={24} height={24} alt="Instagram" />
+        <Image
+          src="/social/instagram-white.png"
+          width={24}
+          height={24}
+          alt="Instagram"
+        />
       </Link>
 
       <Link
         href="https://github.com/MehChow"
         target="_blank"
-        className="hover:opacity-50 transition-opacity"
+        className="transition-opacity hover:opacity-50"
       >
-        <Image src="/social/github-mark-white.png" width={24} height={24} alt="GitHub" />
+        <Image
+          src="/social/github-mark-white.png"
+          width={24}
+          height={24}
+          alt="GitHub"
+          className="aspect-square"
+        />
       </Link>
 
       <Link
         href="https://www.youtube.com/@mehhhhhh"
         target="_blank"
-        className="hover:opacity-50 transition-opacity"
+        className="transition-opacity hover:opacity-50"
       >
         <Image src="/social/youtube.png" width={24} height={24} alt="Youtube" />
       </Link>

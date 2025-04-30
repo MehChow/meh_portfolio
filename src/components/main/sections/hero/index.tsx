@@ -7,8 +7,8 @@ function Hero() {
     <div className="flex justify-center items-center h-[calc(100vh-6rem)] w-full select-none flex-col">
       <h1 className="title">MEHCHOW</h1>
 
-      <div className="flex items-center justify-center gap-2 subtitle-container">
-        <span className="text-white text-4xl text-nowrap">I'm a</span>
+      <div className="flex items-center justify-center gap-4 subtitle-container sm:flex-row sm:gap-2 flex-col">
+        <span className="text-white sm:text-4xl text-3xl text-nowrap">I'm a</span>
         <CubeTextAnimation />
       </div>
 

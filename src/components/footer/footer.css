@@ -1,46 +1,56 @@
 .maomao-background {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -10rem;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url("/anime/maomao.jpg");
-  background-size: contain;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url("/maomao.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: top left;
+  background-position: bottom left;
 
-  -webkit-mask-image: 
-    /* Top fade */ linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.8) 70%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    /* Right fade */ linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 70%);
   -webkit-mask-composite: source-in;
 
-  mask-image: 
-    /* Top fade */ linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.9) 70%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    /* Right fade */ linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 70%);
+  mask-image:
+    linear-gradient(to top, rgba(0, 0, 0, 0.9) 70%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 70%);
   mask-composite: intersect;
   z-index: 0;
+
+  @media (max-width: 1199px) {
+    left: 0;
+    background-position: 26% 100%;
+    mask-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+      linear-gradient(to top, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0) 100%);
+  }
 }
 
 .footer-content-wrapper {
   position: absolute;
-  right: 10rem;
-  top: 10rem;
+  right: 0;
+  bottom: 0;
+  top: 5rem;
   height: 100vh;
-  width: 40vw;
   opacity: 0;
-  transform: translateY(20%);
   display: flex;
-  align-items: end;
   flex-direction: column;
-  gap: 60px;
+  padding-right: 6rem;
+
+  @media (max-width: 1499px) {
+    width: 50%;
+    display: flex;
+    top: 0;
+    padding-right: 0;
+  }
+
+  @media (max-width: 799px) {
+    width: 100%;
+  }
 }
 
 .footer-icon-container {
@@ -50,14 +60,13 @@
   align-items: center;
   width: 20rem;
   height: 20rem;
-  margin-left: auto;
 }
 
 .footer-icon-circular-text {
   font-size: 1.125rem;
   font-weight: 600;
   fill: rgba(255, 255, 255, 0.9);
-  letter-spacing: 1px;
+  letter-spacing: 10px;
 }
 
 .react-dev-text {

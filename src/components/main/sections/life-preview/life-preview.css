@@ -2,4 +2,8 @@
   opacity: 0;
   filter: blur(10px);
   transform: translateX(100%);
+
+  @media (max-width: 1199px) {
+    transform: translateX(0%) translateY(10%);
+  }
 }

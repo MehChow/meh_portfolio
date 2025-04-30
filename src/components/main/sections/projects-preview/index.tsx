@@ -1,104 +1,94 @@
+"use client";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import "./projects-preview.css";
+import "./projects-preview.scss";
 import { MemeableSection } from "./memeable";
 import { PixelArtSection } from "./pixel-art";
 import { memeableImages, minecraftImages } from "./image-config";
-
-gsap.registerPlugin(ScrollTrigger);
-
-interface ImageConfig {
-  className: string;
-  src: string;
-  xPercent: number;
-  yPercent: number;
-  start: string;
-  end: string;
-}
-
-// Reusable function to animate an image
-const animateImage = (
-  className: string,
-  xPercent: number,
-  yPercent: number,
-  start: string,
-  end: string
-) => {
-  gsap.to(`.${className}`, {
-    xPercent,
-    yPercent,
-    rotateZ: 0,
-    duration: 2.5,
-    ease: "power1.out",
-    scrollTrigger: {
-      trigger: `.${className}`,
-      toggleActions: "restart none none none",
-      start,
-      end,
-      scrub: 1,
-    },
-  });
-};
-
-// Reusable function to setup pinning
-const setupPinning = (
-  triggerClass: string,
-  pinClass: string,
-  descriptionClass: string,
-  multiplier: number
-) => {
-  ScrollTrigger.create({
-    trigger: `.${triggerClass}`,
-    start: "top top",
-    end: () => {
-      const description = document.querySelector(`.${descriptionClass}`);
-      if (description instanceof HTMLElement) {
-        const imagesContainer = document.querySelector(`.${pinClass}`);
-        const pinnedHeight =
-          imagesContainer instanceof HTMLElement
-            ? imagesContainer.offsetHeight
-            : window.innerHeight;
-        return `+=${Math.max(description.scrollHeight - pinnedHeight * multiplier, 0)}`;
-      }
-      return "+=0";
-    },
-    pin: `.${pinClass}`,
-    pinSpacing: true,
-  });
-};
+import { useRef } from "react";
+import {
+  animateDesktopMemeable,
+  animateDesktopPixelart,
+  animateMediumMemeable,
+  animateMediumPixelart,
+  fadeUpDescription,
+  setupPinning,
+} from "./gsap-util";
 
 function ProjectsPreview() {
+  // Refs for first section
+  const imagesContainerRef = useRef<HTMLDivElement>(null);
+  const homeImgRef = useRef<HTMLDivElement>(null);
+  const userImgRef = useRef<HTMLDivElement>(null);
+  const memeableDescriptionRef = useRef<HTMLDivElement | null>(null);
+
+  // Refs for second section
+  const secondImagesContainerRef = useRef<HTMLDivElement>(null);
+  const secondHomeImgRef = useRef<HTMLDivElement>(null);
+  const secondUserImgRef = useRef<HTMLDivElement>(null);
+  const pixelArtDescriptionRef = useRef<HTMLDivElement | null>(null);
+
   useGSAP(() => {
-    // Animate first section images
-    animateImage("home-img", 350, 45, "top 90%", "bottom 70%");
-    animateImage("user-img", 350, 40, "top 90%", "bottom 70%");
+    let mm = gsap.matchMedia();
+    // Desktop animation
+    mm.add("(min-width: 1200px)", () => {
+      // Memeable
+      animateDesktopMemeable(userImgRef, -10, 30, () => {
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
 
-    // Setup pinning for first section
-    setupPinning("pin-container", "images-container", "memeable-description", 0.8);
+        // offsetWidth =  the layout width of an element as an integer
+        return container && img1 ? container.offsetWidth - img1.offsetWidth : 0;
+      });
+      animateDesktopMemeable(homeImgRef, -15, 45, () => {
+        const container = imagesContainerRef.current;
+        const img1 = userImgRef.current;
+        const img2 = homeImgRef.current;
 
-    // Animate second section images
-    animateImage("second-home-img", -350, 25, "top 90%", "bottom 70%");
-    animateImage("second-user-img", -350, 150, "top 90%", "bottom 70%");
+        return container && img1 && img2
+          ? container.offsetWidth - img1.offsetWidth - img2.offsetWidth
+          : 0;
+      });
+      setupPinning(imagesContainerRef, memeableDescriptionRef, 20, -10);
 
-    // Setup pinning for second section
-    setupPinning("second-content-wrapper", "second-images-container", "second-description", 0.9);
+      // Pixel arts
+      animateDesktopPixelart(secondHomeImgRef, 20, 45);
+      animateDesktopPixelart(secondUserImgRef, 20, 45);
+
+      setupPinning(secondImagesContainerRef, pixelArtDescriptionRef, 15, 0);
+    });
+
+    // Medium animation
+    mm.add("(max-width: 1199px)", () => {
+      // Memeable
+      animateMediumMemeable(imagesContainerRef, 45, -35);
+
+      // Pixel arts
+      animateMediumPixelart(secondImagesContainerRef, 45, -75);
+    });
+
+    // Fade up description
+    fadeUpDescription(memeableDescriptionRef);
+    fadeUpDescription(pixelArtDescriptionRef);
   }, []);
 
   return (
     <section className="pin-container">
       <MemeableSection
         images={memeableImages}
-        descriptionClass="memeable-description text-justify"
-        imagesContainerClass="images-container"
-        wrapperClass="content-wrapper"
+        imagesContainerRef={imagesContainerRef}
+        homeImgRef={homeImgRef}
+        userImgRef={userImgRef}
+        descriptionRef={memeableDescriptionRef}
       />
       <PixelArtSection
         images={minecraftImages}
-        descriptionClass="second-description text-justify"
-        imagesContainerClass="second-images-container"
-        wrapperClass="second-content-wrapper"
+        secondImagesContainerRef={secondImagesContainerRef}
+        secondHomeImgRef={secondHomeImgRef}
+        secondUserImgRef={secondUserImgRef}
+        descriptionRef={pixelArtDescriptionRef}
       />
     </section>
   );

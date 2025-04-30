@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import { CldImage } from "next-cloudinary";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -16,59 +18,71 @@ function ProjectsMenu() {
       </NavigationMenuTrigger>
 
       <NavigationMenuContent>
-        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_1fr]">
+        <ul className="grid w-[500px] grid-cols-[1fr_1fr] gap-3 p-6">
           {/* Memeable */}
-          <li className="row-span-1 hover:scale-105 transition-all">
+          <li className="row-span-1 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
                 href="/projects"
               >
-                <div className="w-full h-[300px] relative overflow-hidden rounded-md">
-                  <Image
-                    src="/preview/memeable.png"
+                <div className="relative h-[300px] w-full overflow-hidden rounded-md">
+                  <CldImage
+                    src="pixelart_day_adwb5h" // Cloudinary public ID
                     width={540}
                     height={1200}
-                    alt="memeable"
-                    className="rounded-md object-cover"
+                    alt="Memeable project preview"
+                    className="rounded-md"
+                    quality="auto"
+                    format="auto"
                   />
                 </div>
-                <div className="mb-2 mt-4 text-lg font-medium">📱Memeable</div>
-                <p className="text-sm leading-tight text-muted-foreground">
-                  A showcase full-stack mobile app, built with React Native and more
+                <div className="mt-4 mb-2 text-lg font-medium">📱Memeable</div>
+                <p className="text-muted-foreground text-sm leading-tight">
+                  A showcase full-stack mobile app, built with React Native and
+                  more
                 </p>
               </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Minecraft pixel art */}
-          <li className="row-span-1 hover:scale-105 transition-all">
+          <li className="row-span-1 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b p-6 no-underline outline-none select-none focus:shadow-md"
                 href="/"
               >
-                <div className="relative w-full h-[300px] overflow-hidden rounded-md">
-                  <Image
-                    src="/preview/pixelart_day.png"
+                <div className="relative h-[300px] w-full overflow-hidden rounded-md">
+                  <CldImage
+                    src="memeable_user_cx7xd2" // Cloudinary public ID
                     width={508}
                     height={904}
-                    alt="minecraft"
-                    className="rounded-md object-cover"
+                    alt="Minecraft pixel art preview"
+                    className="rounded-md"
+                    quality="auto"
+                    format="auto"
                   />
                 </div>
-                <div className="mb-2 mt-4 text-lg font-medium">🎨Minecraft art</div>
-                <p className="text-sm leading-tight text-muted-foreground">
-                  229 consecutive days of insane solo project, built block by block manually!
+                <div className="mt-4 mb-2 text-lg font-medium">
+                  🎨Minecraft art
+                </div>
+                <p className="text-muted-foreground text-sm leading-tight">
+                  229 consecutive days of insane solo project, built block by
+                  block manually!
                 </p>
               </Link>
             </NavigationMenuLink>
           </li>
 
           <div className="col-span-2">
-            <ListItem href="/docs" title="✏️ Deep learning research paper collaboration">
-              A paper about an application of object detection (YOLO), combined with image dehazing
-              (cGAN), co-authored with a professor and a colleague, published on Applied Sciences📖
+            <ListItem
+              href="/docs"
+              title="✏️ Deep learning research paper collaboration"
+            >
+              A paper about an application of object detection (YOLO), combined
+              with image dehazing (cGAN), co-authored with a professor and a
+              colleague, published on Applied Sciences📖
             </ListItem>
           </div>
         </ul>

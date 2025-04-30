@@ -1,6 +1,9 @@
 "use client";
 
-import { NavigationMenu, NavigationMenuList } from "@/components/ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import ProjectsMenu from "./nav-bar/projects";
 import DevSkillsMenu from "./nav-bar/dev-skills";
 import AboutMeMenu from "./nav-bar/about-me";

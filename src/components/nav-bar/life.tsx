@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import { CldImage } from "next-cloudinary";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -16,43 +18,50 @@ function LifeMenu() {
       </NavigationMenuTrigger>
 
       <NavigationMenuContent>
-        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[650px] lg:h-[650px] lg:grid-cols-[1fr_1fr_1fr] lg:grid-rows-[1fr_1fr_1fr]">
+        <ul className="grid h-[650px] w-[650px] grid-cols-[1fr_1fr_1fr] grid-rows-[1fr_1fr_1fr] gap-3 p-6">
           {/* Gaming */}
-          <li className="row-span-2 col-span-1 hover:scale-105 transition-all">
+          <li className="col-span-1 row-span-2 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b no-underline outline-none select-none focus:shadow-md"
                 href="/life"
               >
                 <div className="text-lg font-medium">🎮Gaming</div>
-                <p className="text-sm leading-tight text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-tight">
                   Star rail, ZZZ, NIKKE, Valorant, ToF, Genshin...
                 </p>
-                <div className="grid-rows-3 mt-auto">
-                  <div className="row-span-1 relative w-full h-[100px]">
-                    <Image
-                      src="/life/game/zzz1.png"
-                      alt="Apex Legends"
+                <div className="mt-auto grid-rows-3">
+                  <div className="relative row-span-1 h-[100px] w-full">
+                    <CldImage
+                      src="zzz1_uh6eq8"
+                      alt="ZZZ gaming screenshot"
                       width={3840}
                       height={2160}
-                      className="rounded-t-md"
+                      className="h-full w-full rounded-t-md"
+                      quality="auto"
+                      format="auto"
                     />
                   </div>
-                  <div className="row-span-1 relative w-full h-[100px]">
-                    <Image
-                      src="/life/game/nikke.png"
-                      alt="Apex Legends"
+                  <div className="relative row-span-1 h-[100px] w-full">
+                    <CldImage
+                      src="nikke_bp96yn"
+                      alt="NIKKE gaming screenshot"
                       width={2600}
                       height={1463}
+                      className="h-full w-full"
+                      quality="auto"
+                      format="auto"
                     />
                   </div>
-                  <div className="row-span-1 relative w-full h-[100px]">
-                    <Image
-                      src="/life/game/tof1.jpg"
-                      alt="Apex Legends"
+                  <div className="relative row-span-1 h-[100px] w-full">
+                    <CldImage
+                      src="tof1_rfzvhh"
+                      alt="Tower of Fantasy gaming screenshot"
                       width={3840}
                       height={2160}
-                      className="rounded-b-md"
+                      className="h-full w-full rounded-b-md"
+                      quality="auto"
+                      format="auto"
                     />
                   </div>
                 </div>
@@ -61,42 +70,48 @@ function LifeMenu() {
           </li>
 
           {/* Anime */}
-          <li className="row-span-1 col-span-2 hover:scale-105 transition-all">
+          <li className="col-span-2 row-span-1 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start text-right rounded-md no-underline outline-none focus:shadow-md relative overflow-hidden hover:opacity-95 transition-all"
+                className="relative flex h-full w-full flex-col justify-start overflow-hidden rounded-md text-right no-underline transition-all outline-none select-none hover:opacity-95 focus:shadow-md"
                 href="/"
               >
-                <Image
-                  src="/life/lycoris.jpg"
-                  alt="Lycoris"
+                <CldImage
+                  src="lycoris_aobjok"
+                  alt="Lycoris Recoil anime"
                   width={1800}
                   height={1012}
                   className="absolute inset-0"
+                  quality="auto"
+                  format="auto"
                 />
-                <div className="text-lg font-medium text-white z-10">📺Anime</div>
+                <div className="z-10 text-lg font-medium text-white">
+                  📺Anime
+                </div>
               </Link>
             </NavigationMenuLink>
           </li>
 
           {/* Pets */}
-          <li className="row-span-1 hover:scale-105 transition-all">
+          <li className="row-span-1 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-0 no-underline outline-none focus:shadow-md text-center"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b p-0 text-center no-underline outline-none select-none focus:shadow-md"
                 href="/"
               >
                 <div className="text-lg font-medium">🐢Pets🐢</div>
-                <p className="text-sm leading-tight text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-tight">
                   I got 2 turtles. They are 21 yo already!!
                 </p>
                 <div className="flex-1">
-                  <Image
-                    src="/life/turtle.jpg"
-                    alt="Turtle"
+                  <CldImage
+                    src="turtle_h7ykke"
+                    alt="Turtles"
                     width={2016}
                     height={954}
-                    className="rounded-md w-full h-full"
+                    className="h-full w-full rounded-md"
+                    quality="auto"
+                    format="auto"
                   />
                 </div>
               </Link>
@@ -104,18 +119,18 @@ function LifeMenu() {
           </li>
 
           {/* Editing */}
-          <li className="row-span-2 col-span-1 hover:scale-105 transition-all">
+          <li className="col-span-1 row-span-2 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col justify-start text-right rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b text-right no-underline outline-none select-none focus:shadow-md"
                 href="/"
               >
                 <div className="text-lg font-medium">🎬Video Editing</div>
-                <p className="text-sm leading-tight text-muted-foreground">
+                <p className="text-muted-foreground text-sm leading-tight">
                   I make gaming videos, mainly Valorant and Heaven Burns Red.
                 </p>
 
-                <div className="bg-amber-100 relative aspect-[9/16] m-2">
+                <div className="relative m-2 aspect-[9/16] bg-amber-100">
                   <ReactPlayer
                     url="https://www.youtube.com/shorts/zBa92DGWn8M"
                     width="100%"
@@ -130,35 +145,40 @@ function LifeMenu() {
           </li>
 
           {/* Cooking */}
-          <li className="row-span-1 col-span-2 hover:scale-105 transition-all">
+          <li className="col-span-2 row-span-1 transition-all hover:scale-105">
             <NavigationMenuLink asChild>
               <Link
-                className="flex h-full w-full select-none flex-col px-4 justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
+                className="from-muted/50 to-muted flex h-full w-full flex-col justify-start rounded-md bg-gradient-to-b px-4 no-underline outline-none select-none focus:shadow-md"
                 href="/"
               >
                 <div className="text-lg font-medium">🍰Making Food</div>
-                <p className="text-sm leading-tight text-muted-foreground">
-                  Mainly desserts, but sometimes drinks and other food as well like lasagna
+                <p className="text-muted-foreground text-sm leading-tight">
+                  Mainly desserts, but sometimes drinks and other food as well
+                  like lasagna
                 </p>
 
-                <div className="grid-cols-2 flex gap-2">
-                  <div className="col-span-1 relative w-1/2">
-                    <Image
-                      src="/life/food/heart-too-soft.jpg"
-                      alt="Heart Too Soft"
+                <div className="flex grid-cols-2 gap-2">
+                  <div className="relative col-span-1 w-1/2">
+                    <CldImage
+                      src="heart-too-soft_c0u63i"
+                      alt="Heart Too Soft dessert"
                       width={1776}
                       height={1080}
-                      className="object-cover rounded-md w-full h-full"
+                      className="h-full w-full rounded-md"
+                      quality="auto"
+                      format="auto"
                     />
                   </div>
-                  <div className="col-span-1 relative w-1/2">
-                    <Image
-                      src="/life/food/lasagna.jpg"
-                      alt="Lasagna"
+                  <div className="relative col-span-1 w-1/2">
+                    <CldImage
+                      src="lasagna_s8n3zb"
+                      alt="Lasagna dish"
                       width={2016}
                       height={954}
-                      className="object-cover rounded-md w-full h-full"
+                      className="h-full w-full rounded-md"
                       style={{ objectPosition: "25%" }}
+                      quality="auto"
+                      format="auto"
                     />
                   </div>
                 </div>

@@ -1,21 +1,21 @@
-import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+"use client";
 
-// Register GSAP plugins
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CldImage } from "next-cloudinary";
+
 gsap.registerPlugin(ScrollTrigger);
 
-interface CirculrIconProps {
+interface CircularIconProps {
   imageSrc: string;
   text: string;
 }
 
-const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
+const CircularIcon = ({ imageSrc, text }: CircularIconProps) => {
   useGSAP(() => {
-    // Animation for circular text movement along the path
     gsap.to(".footer-icon-circular-text", {
-      attr: { startOffset: "25%" }, // Adjust this value to control the "rotation" distance
+      attr: { startOffset: "25%" },
       ease: "power1.out",
       scrollTrigger: {
         trigger: ".footer-icon-container",
@@ -30,13 +30,13 @@ const CircularIcon = ({ imageSrc, text }: CirculrIconProps) => {
     <div className="footer-icon-container">
       {/* Circular Image */}
       <div className="relative z-10 h-50 w-50 overflow-hidden rounded-full">
-        <Image
+        <CldImage
           src={imageSrc}
           alt="Circular icon"
           fill
           className="object-cover object-[5%] select-none"
-          quality={100}
-          sizes="800px"
+          quality="auto"
+          format="auto"
         />
       </div>
 

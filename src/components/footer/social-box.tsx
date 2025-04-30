@@ -1,7 +1,9 @@
-import Image from "next/image";
+"use client";
+
+import { CldImage } from "next-cloudinary";
 import Link from "next/link";
 
-function SocialBox() {
+export default function SocialBox() {
   return (
     <div className="mt-2 flex items-center gap-4 opacity-80">
       <Link
@@ -9,11 +11,13 @@ function SocialBox() {
         target="_blank"
         className="transition-opacity hover:opacity-50"
       >
-        <Image
-          src="/social/instagram-white.png"
+        <CldImage
+          src="instagram-white_sfwpsf" // Cloudinary public ID
           width={24}
           height={24}
           alt="Instagram"
+          quality="auto"
+          format="auto"
         />
       </Link>
 
@@ -22,12 +26,14 @@ function SocialBox() {
         target="_blank"
         className="transition-opacity hover:opacity-50"
       >
-        <Image
-          src="/social/github-mark-white.png"
+        <CldImage
+          src="github-mark-white_ddtogb" // Cloudinary public ID
           width={24}
           height={24}
           alt="GitHub"
           className="aspect-square"
+          quality="auto"
+          format="auto"
         />
       </Link>
 
@@ -36,10 +42,15 @@ function SocialBox() {
         target="_blank"
         className="transition-opacity hover:opacity-50"
       >
-        <Image src="/social/youtube.png" width={24} height={24} alt="Youtube" />
+        <CldImage
+          src="youtube_pnrueg" // Cloudinary public ID
+          width={24}
+          height={24}
+          alt="Youtube"
+          quality="auto"
+          format="auto"
+        />
       </Link>
     </div>
   );
 }
-
-export default SocialBox;

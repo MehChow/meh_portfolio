@@ -24,7 +24,7 @@ export default function RootLayout({
         <div className="hero" />
 
         {/* Main content */}
-        <main className="min-h-lvh bg-black justify-center items-center flex flex-col pt-24">
+        <main className="flex min-h-lvh flex-col items-center justify-center bg-black pt-24">
           <Header />
           {children}
           <Footer />

@@ -20,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="no-scrollbar">
       <head>
-        <script src="https://unpkg.com/react-scan/dist/auto.global.js" />
+        {process.env.NODE_ENV === "development" && (
+          <script src="https://unpkg.com/react-scan/dist/auto.global.js" />
+        )}
       </head>
       <body className={`${tektur.className}`}>
         {/* First loaded viewport Background */}

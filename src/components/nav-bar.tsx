@@ -8,6 +8,7 @@ import ProjectsMenu from "./nav-bar/projects";
 import DevSkillsMenu from "./nav-bar/dev-skills";
 import AboutMeMenu from "./nav-bar/about-me";
 import LifeMenu from "./nav-bar/life";
+import { memo } from "react";
 
 function NavBar() {
   return (
@@ -29,4 +30,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default memo(NavBar);

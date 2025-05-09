@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CldImage } from "next-cloudinary";
+import { memo } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,4 +68,4 @@ const CircularIcon = ({ imageSrc, text }: CircularIconProps) => {
   );
 };
 
-export default CircularIcon;
+export default memo(CircularIcon);

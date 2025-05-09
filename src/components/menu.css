@@ -1,4 +1,5 @@
 .backgroundOverlay {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/image-swiper/bigherta.png");
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/bigherta.png");
 }

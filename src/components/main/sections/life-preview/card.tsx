@@ -12,7 +12,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`group medium:w-1/5 medium:h-[600px] medium:hover:w-[50%] medium:hover:h-[600px] medium:aspect-auto relative flex h-full w-full cursor-pointer items-center justify-center rounded-4xl transition-all duration-300 ${containerClass}`}
+      className={`group medium:w-1/5 medium:h-[600px] medium:hover:w-[50%] medium:hover:scale-100 medium:hover:h-[600px] medium:aspect-auto relative flex h-full w-full cursor-pointer items-center justify-center rounded-4xl transition-all duration-300 hover:scale-105 ${containerClass}`}
     >
       <CldImage
         src={src}

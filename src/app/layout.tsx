@@ -19,12 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="no-scrollbar">
+      <head>
+        <script src="https://unpkg.com/react-scan/dist/auto.global.js" />
+      </head>
       <body className={`${tektur.className}`}>
         {/* First loaded viewport Background */}
         <div className="hero" />
 
         {/* Main content */}
-        <main className="flex min-h-lvh flex-col items-center justify-center bg-black pt-24">
+        <main className="flex min-h-lvh w-full flex-col items-center justify-center overflow-x-hidden bg-black pt-24">
           <Header />
           {children}
           <Footer />
